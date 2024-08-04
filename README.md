@@ -4,6 +4,8 @@
 ## Design
 
 The app's design is inspired by the Figma style provided in this [Figma design](https://www.figma.com/design/Db32TQ6SMVcvL9Rr7y61nq/Mobile-eCommerce-Clothing-Store-App-Design-(Community)?m=auto&t=QXDoOxZG7ZizNZNr-1).
+
+<img src="https://github.com/ashrf100/i_shop/blob/main/images/figma.png" alt="Figma Design" width="400"/>
 ## Key Features
 
 - **Responsive Layout**: The app uses `flutter_screenutil` to ensure that the layout adapts to different screen sizes and resolutions, providing a consistent look and feel across devices.
