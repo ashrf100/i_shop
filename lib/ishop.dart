@@ -1,5 +1,6 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:i_shop/bloc_providers.dart';
+import 'package:i_shop/core/hepler/route_generator.dart';
 import 'package:i_shop/core/widgets/bottom_nav_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,11 +13,12 @@ class IShop extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       designSize: const Size(360, 690),
-      builder: (context, child) => MaterialApp(
-        locale: DevicePreview.locale(context),
-        builder: DevicePreview.appBuilder,
-        debugShowCheckedModeBanner: false,
-        home: BottomNavBarWidget(),
+      builder: (context, child) => const AppBlocProviders(
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: BottomNavBarWidget(),
+          onGenerateRoute: RouteGenerator.generateRoute,
+        ),
       ),
     );
   }

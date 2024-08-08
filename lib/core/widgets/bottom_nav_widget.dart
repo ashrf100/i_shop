@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:i_shop/core/const/app_colors.dart';
 import 'package:i_shop/core/const/app_text_styles.dart';
+import 'package:i_shop/core/widgets/spacer_widget.dart';
+import 'package:i_shop/features/products/presentation/pages/home_page.dart';
 import 'package:i_shop/main.dart';
 import 'package:badges/badges.dart' as badges;
 
@@ -17,15 +19,16 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
   final int _cartItemCount = 5;
 
   final List<Widget> _screens = [
-    Screen1(),
-    Screen2(),
-    Screen3(),
-    Screen4(),
+    HomePage(),
+    HomePage(),
+    HomePage(),
+    HomePage(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       body: Stack(
         alignment: AlignmentDirectional.center,
         children: [
@@ -63,8 +66,8 @@ class CustomBottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 250.w,
-      height: 60.h,
+      width: 300.w,
+      height: 50.h,
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: AppColors.darkGray,
@@ -94,7 +97,7 @@ class CustomBottomNavBar extends StatelessWidget {
           children: [
             SizedBox(height: 2.h),
             AnimatedSwitcher(
-              duration: Duration(milliseconds: 300),
+              duration: Duration(milliseconds: 1000),
               child: Icon(
                 index == selectedIndex ? activeIcon : icon,
                 key: ValueKey<int>(index),
@@ -103,7 +106,7 @@ class CustomBottomNavBar extends StatelessWidget {
                     : AppColors.lightGray,
               ),
             ),
-            SizedBox(height: 2.h),
+            SpacerWidget.vertical(height: 2.h),
             CircleAvatar(
               radius: 1.5.r,
               backgroundColor:
@@ -118,7 +121,7 @@ class CustomBottomNavBar extends StatelessWidget {
   Widget _buildNavItemWithBadge(
       IconData icon, IconData activeIcon, int index, int count) {
     return badges.Badge(
-      position: badges.BadgePosition.topEnd(top: -4, end: 1.w),
+      position: badges.BadgePosition.topEnd(top: -4.h, end: 1.w),
       showBadge: count > 0,
       badgeContent: Padding(
         padding: EdgeInsets.zero,
