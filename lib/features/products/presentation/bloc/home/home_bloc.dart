@@ -15,10 +15,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   List<AppProduct> homeProductsList = [];
   List<AppCategory> homeCategoriesList = [];
   int selectedIndex = 0;
-  int limit = 4;
+  int limit = 10;
   bool isNoMore = false;
 
-  HomeEvent? currentHomeEvent;
+  HomeEvent? currentHomeEvent = ProductsEvent();
   AppCategory? currentAppCategory;
 
   HomeBloc(
@@ -143,7 +143,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   void handleNewProductRequest(HomeEvent event, Emitter<HomeState> emit) {
-    if (currentHomeEvent != event && currentHomeEvent != null ) {
+    if (currentHomeEvent != event && currentHomeEvent != null) {
       homeProductsList.clear();
       emit(const HomeState.productsLoading());
       isNoMore = false;

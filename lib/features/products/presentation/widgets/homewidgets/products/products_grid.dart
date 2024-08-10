@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:i_shop/core/const/app_routes.dart';
 import 'package:i_shop/features/products/presentation/bloc/home/home_bloc.dart';
 import 'package:i_shop/features/products/presentation/bloc/home/home_event.dart';
@@ -85,31 +86,29 @@ class _ProductsGridState extends State<ProductsGrid> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(8.0.w),
-      child: GridView.builder(
-        primary: false,
-        controller: _scrollController,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            mainAxisSpacing: 0.0..h,
-            crossAxisSpacing: 8.0.w,
-            childAspectRatio: 0.372.w),
-        itemCount: widget.products.length,
-        itemBuilder: (context, index) {
-          final product = widget.products[index];
-          return GridProduct(
-            product: product,
-            index: index,
-            onTap: (product) {
-              Navigator.pushNamed(
-                context,
-                AppRoutes.productInfo,
-                arguments: product,
-              );
-            },
-          );
-        },
+    return SingleChildScrollView(
+      controller: _scrollController,
+      child: Container(
+        padding: EdgeInsets.all(8.0.w),
+        child: StaggeredGrid.count(
+          crossAxisCount: 2,
+          mainAxisSpacing: 0.0..h,
+          crossAxisSpacing: 8.0.w,
+          children: List.generate(
+            widget.products.length,
+            (index) => GridProduct(
+              product: widget.products[index],
+              index: index,
+              onTap: (product) {
+                Navigator.pushNamed(
+                  context,
+                  AppRoutes.productInfo,
+                  arguments: product,
+                );
+              },
+            ),
+          ),
+        ),
       ),
     );
   }

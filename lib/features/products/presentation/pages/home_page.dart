@@ -6,7 +6,7 @@ import 'package:i_shop/core/widgets/spacer_widget.dart';
 import 'package:i_shop/features/products/presentation/bloc/home/home_bloc.dart';
 import 'package:i_shop/features/products/presentation/bloc/home/home_event.dart';
 import 'package:i_shop/features/products/presentation/widgets/homewidgets/categories/home_categories_list.dart';
-import 'package:i_shop/features/products/presentation/widgets/home_search_setting_widget.dart';
+import 'package:i_shop/features/products/presentation/widgets/homewidgets/search%20_sort/home_search_and_setting_widget.dart';
 import 'package:i_shop/features/products/presentation/widgets/homewidgets/products/home_straggle_grid_helper.dart';
 import 'package:i_shop/features/products/presentation/widgets/home_welcome_widget.dart';
 
@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
                         SpacerWidget.vertical(height: 5.h),
                         const HomeWelcomeWidget(),
                         SpacerWidget.vertical(height: 15.h),
-                        const HomeSearchSettingWidget(),
+                        const HomeSearchAndSettingWidget(),
                         SpacerWidget.vertical(height: 15.h),
                         const CategoriesHorizontalList(),
                         SpacerWidget.vertical(height: 5.h),

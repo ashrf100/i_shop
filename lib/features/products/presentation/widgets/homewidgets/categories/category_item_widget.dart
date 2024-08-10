@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:i_shop/core/const/app_text_styles.dart';
 import 'package:i_shop/core/widgets/spacer_widget.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:i_shop/features/products/domain/entities/app_category.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -37,8 +36,8 @@ class CategoryItemWidget extends StatelessWidget {
         ),
         child: Row(
           children: [
-            FaIcon(
-              FontAwesomeIcons.faceSmile,
+            Icon(
+              Icons.smart_display,
               color: isSelected ? Colors.white : Colors.black,
             ),
             SpacerWidget.horizontal(width: 8.w),

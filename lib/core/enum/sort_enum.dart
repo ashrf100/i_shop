@@ -1,3 +1,9 @@
 enum SortBy { title, price, rating }
+enum Sortorder {
+  asc('A To Z'),
+  desc('Z To A');
 
-enum Sortorder { asc, desc }
+  final String displayName;
+
+  const Sortorder(this.displayName);
+}
