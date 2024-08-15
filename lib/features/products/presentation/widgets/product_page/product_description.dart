@@ -18,17 +18,17 @@ class ProductDescription extends StatelessWidget {
         children: [
           Text(
             'Description',
-            style: AppTextStyles.darkGray16bold,
+            style: AppTextStyles.darkGray16Bold,
           ),
           SpacerWidget.vertical(height: 8.h),
           Text(
             product.description, // Access description directly
-            style: AppTextStyles.darkgray14regular,
+            style: AppTextStyles.darkGray14Regular,
           ),
           SpacerWidget.vertical(height: 16.h),
           Text(
             'Stock: ${product.stock} left', // Access stock directly
-            style: AppTextStyles.darkgray14regular.copyWith(
+            style: AppTextStyles.darkGray14Regular.copyWith(
               color: product.availabilityStatus == 'Low Stock'
                   ? Colors.red
                   : Colors.green,

@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'package:i_shop/features/products/domain/entities/app_product.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -101,11 +102,17 @@ class Dimensions {
 }
 
 @JsonSerializable()
+@HiveType(typeId: 2)
 class Review {
+  @HiveField(0)
   final double rating;
+  @HiveField(1)
   final String comment;
+  @HiveField(2)
   final DateTime date;
+  @HiveField(3)
   final String reviewerName;
+  @HiveField(4)
   final String reviewerEmail;
 
   Review({

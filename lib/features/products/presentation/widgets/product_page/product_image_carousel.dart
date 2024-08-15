@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:i_shop/core/const/app_colors.dart';
 import 'package:i_shop/core/widgets/custom_cached_image.dart';
+import 'package:i_shop/features/products/domain/entities/app_product.dart';
+import 'package:i_shop/features/products/presentation/bloc/Favorite/favorite_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:i_shop/features/products/presentation/widgets/favorite_circle_avatar.dart';
+import 'package:i_shop/injection_container.dart' as di;
 
 class ProductImageCarousel extends StatefulWidget {
-  final List<String> images;
+  final AppProduct appProduct;
 
-  const ProductImageCarousel({required this.images});
+  const ProductImageCarousel({required this.appProduct});
 
   @override
   _ProductImageCarouselState createState() => _ProductImageCarouselState();
@@ -43,10 +47,10 @@ class _ProductImageCarouselState extends State<ProductImageCarousel> {
           children: [
             PageView.builder(
               controller: _pageController,
-              itemCount: widget.images.length,
+              itemCount: widget.appProduct.images.length,
               itemBuilder: (context, index) {
                 return CustomCachedImage(
-                  imageUrl: widget.images[index],
+                  imageUrl: widget.appProduct.images[index],
                 );
               },
             ),
@@ -57,7 +61,7 @@ class _ProductImageCarouselState extends State<ProductImageCarousel> {
               child: Center(
                 child: SmoothPageIndicator(
                   controller: _pageController,
-                  count: widget.images.length,
+                  count: widget.appProduct.images.length,
                   effect: WormEffect(
                     dotColor: AppColors.gray.withOpacity(0.3),
                     activeDotColor: AppColors.darkGray,
@@ -68,7 +72,12 @@ class _ProductImageCarouselState extends State<ProductImageCarousel> {
             Positioned(
               top: 8.h,
               right: 8.r,
-              child: const FaverotCircleAvatar(),
+              child: BlocProvider(
+                create: (context) => di.sl<FavoritesBloc>(),
+                child: FavoriteCircleAvatar(
+                  appProduct: widget.appProduct,
+                ),
+              ),
             ),
             Positioned(
               top: 8.h,

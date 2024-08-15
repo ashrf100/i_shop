@@ -8,7 +8,8 @@ import 'package:shimmer/shimmer.dart';
 class CategoryItemWidget extends StatelessWidget {
   final AppCategory category;
   final bool isSelected;
-  final onTap;
+  final VoidCallback onTap;
+
   const CategoryItemWidget({
     Key? key,
     required this.category,
@@ -23,14 +24,18 @@ class CategoryItemWidget extends StatelessWidget {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),
         margin: EdgeInsets.symmetric(horizontal: 5.w),
-        padding: EdgeInsets.symmetric(horizontal: 10.w),
+        padding: isSelected
+            ? EdgeInsets.symmetric(horizontal: 20.w)
+            : EdgeInsets.symmetric(horizontal: 10.w),
         decoration: BoxDecoration(
           color: isSelected ? Colors.black : Colors.grey[300],
           borderRadius: BorderRadius.circular(10.r),
           boxShadow: isSelected
               ? [
                   BoxShadow(
-                      color: Colors.black.withOpacity(0.2), blurRadius: 10.r)
+                    color: Colors.black.withOpacity(0.2),
+                    blurRadius: 10.r,
+                  ),
                 ]
               : [],
         ),
@@ -42,10 +47,10 @@ class CategoryItemWidget extends StatelessWidget {
             ),
             SpacerWidget.horizontal(width: 8.w),
             Text(
-              _formatCategoryName(category.title.toString()),
+              _formatCategoryName(category.title ?? ''),
               style: isSelected
-                  ? AppTextStyles.white12regular
-                  : AppTextStyles.darkgray12regular,
+                  ? AppTextStyles.white14Regular
+                  : AppTextStyles.darkGray14Regular,
             ),
           ],
         ),
@@ -70,11 +75,11 @@ class CategoryItemShimmer extends StatelessWidget {
     return Container(
       width: 100.w,
       height: 30.h,
+      margin: EdgeInsets.symmetric(horizontal: 5.w),
+      padding: EdgeInsets.symmetric(horizontal: 8.w),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.r),
       ),
-      margin: EdgeInsets.symmetric(horizontal: 5.w),
-      padding: EdgeInsets.symmetric(horizontal: 8.w),
       child: Shimmer.fromColors(
         baseColor: Colors.grey[300]!,
         highlightColor: Colors.grey[100]!,

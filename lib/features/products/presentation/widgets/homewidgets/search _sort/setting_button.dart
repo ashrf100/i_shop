@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:i_shop/core/const/app_colors.dart';
+import 'package:i_shop/features/products/presentation/bloc/home/home_bloc.dart';
 
 import 'package:i_shop/features/products/presentation/widgets/homewidgets/search%20_sort/sort_options_bottom_sheet.dart';
 
@@ -26,11 +28,16 @@ class SettingButton extends StatelessWidget {
   }
 
   void _showSortOptionsBottomSheet(BuildContext context) {
+    final homeBloc = BlocProvider.of<HomeBloc>(context);
+
     showModalBottomSheet(
       context: context,
       backgroundColor: AppColors.white,
       builder: (BuildContext context) {
-        return const SortOptionsBottomSheet();
+        return BlocProvider.value(
+          value: homeBloc,
+          child: const SortOptionsBottomSheet(),
+        );
       },
     );
   }

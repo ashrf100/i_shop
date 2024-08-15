@@ -29,4 +29,8 @@ abstract class ProductsRepostiory {
     required int skip,
     required String searchText,
   });
+
+  Future<Either<AppException, void>> addFavorite(AppProduct appProduct);
+  Future<Either<AppException, Unit>> removeFavorite(String id);
+  Future<Either<AppException, List<AppProduct>>> getFavorites();
 }

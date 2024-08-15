@@ -10,13 +10,11 @@ import 'package:lottie/lottie.dart';
 
 class ErrorNotification extends StatelessWidget {
   final String message;
-  final String? searchText;
+  final bool withButton;
 
-  const ErrorNotification({
-    Key? key,
-    required this.message,
-    this.searchText,
-  }) : super(key: key);
+  const ErrorNotification(
+      {Key? key, required this.message, this.withButton = true})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +24,7 @@ class ErrorNotification extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(16.0.w),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Flexible(
                 child: Lottie.asset(AppAssets.errorLottie),
@@ -33,22 +32,23 @@ class ErrorNotification extends StatelessWidget {
               SizedBox(height: 16.0.h),
               Text(
                 message,
-                style: AppTextStyles.gray16regular,
+                style: AppTextStyles.gray16Regular,
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 24.0.h),
-              if (searchText == null)
-                ElevatedButton(
-                  onPressed: () {
-                    BlocProvider.of<HomeBloc>(context)
-                        .add(const HomeEvent.init());
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red,
-                    foregroundColor: Colors.white,
-                  ),
-                  child: Text('Retry'),
-                ),
+              withButton
+                  ? ElevatedButton(
+                      onPressed: () {
+                        BlocProvider.of<HomeBloc>(context)
+                            .add(const HomeEvent.init());
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red,
+                        foregroundColor: Colors.white,
+                      ),
+                      child: Text('Retry'),
+                    )
+                  : SizedBox.shrink(),
               SizedBox(height: 110.0.w),
             ],
           ),

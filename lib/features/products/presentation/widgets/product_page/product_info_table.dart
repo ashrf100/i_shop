@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:i_shop/core/const/app_text_styles.dart';
-import 'package:i_shop/features/products/data/models/products_model.dart';
-import 'package:i_shop/features/products/domain/entities/app_product.dart'; // Import AppProduct class
-
+import 'package:i_shop/features/products/domain/entities/app_product.dart';
 class ProductInfoTable extends StatelessWidget {
-  final AppProduct product; // Change to AppProduct
+  final AppProduct product;
 
   const ProductInfoTable({required this.product});
 
@@ -14,7 +12,7 @@ class ProductInfoTable extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(16.0.w),
       child: Table(
-        columnWidths: {
+        columnWidths: const {
           0: FlexColumnWidth(1),
           1: FlexColumnWidth(2),
         },
@@ -22,15 +20,15 @@ class ProductInfoTable extends StatelessWidget {
           _buildTableRow(
               'Warranty',
               product
-                  .warrantyInformation), // Access warrantyInformation directly
+                  .warrantyInformation), 
           _buildTableRow(
               'Shipping',
               product
-                  .shippingInformation), // Access shippingInformation directly
+                  .shippingInformation),
           _buildTableRow('Return Policy',
-              product.returnPolicy), // Access returnPolicy directly
-          _buildTableRow('Brand', product.brand), // Access brand directly
-          _buildTableRow('SKU', product.sku), // Access sku directly
+              product.returnPolicy), 
+          _buildTableRow('Brand', product.brand), 
+          _buildTableRow('SKU', product.sku), 
         ],
       ),
     );
@@ -43,7 +41,7 @@ class ProductInfoTable extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 8.h),
           child: Text(
             '$label:',
-            style: AppTextStyles.darkgray12regular
+            style: AppTextStyles.darkGray14Regular
                 .copyWith(fontWeight: FontWeight.bold),
           ),
         ),
@@ -51,7 +49,7 @@ class ProductInfoTable extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 8.h),
           child: Text(
             value,
-            style: AppTextStyles.darkgray12regular,
+            style: AppTextStyles.darkGray14Regular,
           ),
         ),
       ],

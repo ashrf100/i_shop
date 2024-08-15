@@ -5,7 +5,7 @@ import 'package:i_shop/core/widgets/spacer_widget.dart';
 import 'package:i_shop/features/products/domain/entities/app_product.dart'; // Import AppProduct class
 
 class ProductDetails extends StatelessWidget {
-  final AppProduct product; // Change to AppProduct
+  final AppProduct product;
   final int quantity;
   final ValueChanged<int> onQuantityChanged;
 
@@ -29,16 +29,16 @@ class ProductDetails extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      product.title, // Access title directly
-                      style: AppTextStyles.darkGray18bold,
+                      product.title,
+                      style: AppTextStyles.darkGray20Bold,
                     ),
                     SpacerWidget.vertical(height: 4.h),
                     Row(
                       children: [
                         Icon(Icons.star, color: Colors.amber, size: 20.sp),
                         Text(
-                          "${product.rating}".toString(), // Access rating directly
-                          style: AppTextStyles.darkgray14regular,
+                          "${product.rating}".toString(),
+                          style: AppTextStyles.darkGray14Regular,
                         ),
                       ],
                     ),
@@ -53,7 +53,7 @@ class ProductDetails extends StatelessWidget {
           ),
           /*   Text(
             '\$${product.price}', // Access price directly
-            style: AppTextStyles.black16bold.copyWith(color: Colors.green),
+            style: AppTextStyles.darkGray16Bold.copyWith(color: Colors.green),
           ),
           SpacerWidget.vertical(height: 8.h),*/
         ],
@@ -76,7 +76,7 @@ class QuantitySelector extends StatelessWidget {
     return Row(
       children: [
         IconButton(
-          icon: Icon(Icons.remove),
+          icon: const Icon(Icons.remove),
           onPressed: () {
             if (quantity > 1) onQuantityChanged(quantity - 1);
           },
@@ -85,11 +85,11 @@ class QuantitySelector extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 8.0.w),
           child: Text(
             quantity.toString(),
-            style: AppTextStyles.darkGray16bold,
+            style: AppTextStyles.darkGray16Bold,
           ),
         ),
         IconButton(
-          icon: Icon(Icons.add),
+          icon: const Icon(Icons.add),
           onPressed: () {
             onQuantityChanged(quantity + 1);
           },

@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:i_shop/core/const/app_colors.dart';
 import 'package:i_shop/core/const/app_text_styles.dart';
+import 'package:i_shop/core/routing/app_routes.dart';
 import 'package:i_shop/core/widgets/spacer_widget.dart';
+import 'package:i_shop/features/products/presentation/pages/favorites_page.dart';
 import 'package:i_shop/features/products/presentation/pages/home_page.dart';
-import 'package:i_shop/main.dart';
 import 'package:badges/badges.dart' as badges;
 
 class BottomNavBarWidget extends StatefulWidget {
@@ -20,9 +21,9 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
 
   final List<Widget> _screens = [
     HomePage(),
-    HomePage(),
-    HomePage(),
-    HomePage(),
+    FavoritesPage(),
+    SizedBox.shrink(),
+    SizedBox.shrink()
   ];
 
   @override
@@ -69,6 +70,7 @@ class CustomBottomNavBar extends StatelessWidget {
       width: 300.w,
       height: 50.h,
       alignment: Alignment.center,
+      padding: EdgeInsets.symmetric(horizontal: 8.w),
       decoration: BoxDecoration(
         color: AppColors.darkGray,
         borderRadius: BorderRadius.circular(25.r),
@@ -77,9 +79,35 @@ class CustomBottomNavBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           _buildNavItem(Icons.home_outlined, Icons.home, 0),
-          _buildNavItemWithBadge(Icons.shopping_cart_outlined,
-              Icons.shopping_cart, 1, cartItemCount),
-          _buildNavItem(Icons.favorite_outline, Icons.favorite, 2),
+          _buildNavItemWithBadge(
+              Icons.favorite_border, Icons.favorite, 1, cartItemCount),
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                AppRoutes.cart,
+              );
+            },
+            child: CircleAvatar(
+              backgroundColor: AppColors.gray,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(height: 2.h),
+                  Icon(
+                    Icons.shopping_cart_outlined,
+                    color: AppColors.lightGray,
+                  ),
+                  SpacerWidget.vertical(height: 2.h),
+                  CircleAvatar(
+                    radius: 1.5.r,
+                    backgroundColor: AppColors.gray,
+                  ),
+                ],
+              ),
+            ),
+          ),
           _buildNavItem(Icons.person_outline, Icons.person, 3),
         ],
       ),
@@ -124,10 +152,10 @@ class CustomBottomNavBar extends StatelessWidget {
       position: badges.BadgePosition.topEnd(top: -4.h, end: 1.w),
       showBadge: count > 0,
       badgeContent: Padding(
-        padding: EdgeInsets.zero,
+        padding: EdgeInsets.all(0.9.w),
         child: Text(
           count.toString(),
-          style: AppTextStyles.white8normal,
+          style: AppTextStyles.white10Regular,
         ),
       ),
       badgeStyle: badges.BadgeStyle(

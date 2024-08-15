@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:i_shop/bloc_providers.dart';
-import 'package:i_shop/core/hepler/route_generator.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:i_shop/core/routing/route_generator.dart';
 import 'package:i_shop/core/widgets/bottom_nav_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:i_shop/features/cart/presentation/bloc/cart_bloc.dart';
+import 'package:i_shop/features/cart/presentation/bloc/cart_event.dart';
+import 'package:i_shop/injection_container.dart' as di;
 
 class IShop extends StatelessWidget {
   IShop({super.key});
@@ -13,8 +16,9 @@ class IShop extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       designSize: const Size(360, 690),
-      builder: (context, child) => const AppBlocProviders(
-        child: MaterialApp(
+      builder: (context, child) => BlocProvider(
+        create: (context) => di.sl<CartBloc>()..add(CartEvent.loadCart(50)),
+        child: const MaterialApp(
           debugShowCheckedModeBanner: false,
           home: BottomNavBarWidget(),
           onGenerateRoute: RouteGenerator.generateRoute,

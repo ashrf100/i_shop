@@ -12,45 +12,45 @@ class ErrorHandler {
       switch (error.type) {
         case DioExceptionType.connectionTimeout:
           _logger.severe('Connection Timeout Exception: ${error.message}');
-          throw ConnectionTimeoutException();
+          return Future.value( AppException.connectionTimeout());
         case DioExceptionType.sendTimeout:
           _logger.severe('Send Timeout Exception: ${error.message}');
-          throw SendTimeoutException();
+          return Future.value( AppException.sendTimeout());
         case DioExceptionType.receiveTimeout:
           _logger.severe('Receive Timeout Exception: ${error.message}');
-          throw ReceiveTimeoutException();
+          return Future.value( AppException.receiveTimeout());
         case DioExceptionType.cancel:
           _logger.warning('Request Cancelled: ${error.message}');
-          throw RequestCancelledException();
+          return Future.value( AppException.requestCancelled());
         case DioExceptionType.badResponse:
           final statusCode = error.response?.statusCode ?? 'Unknown';
           _logger.severe('Bad Response: Status Code $statusCode');
           // Map status code to custom exceptions
           switch (statusCode) {
             case 400:
-              throw BadRequestException();
+              return Future.value( AppException.badRequest());
             case 401:
-              throw UnauthorizedException();
+              return Future.value( AppException.unauthorized());
             case 404:
-              throw NotFoundException();
+              return Future.value( AppException.notFound());
             case 500:
-              throw InternalServerErrorException();
+              return Future.value( AppException.internalServerError());
             default:
-              throw FetchDataException();
+              return Future.value( AppException.unknown());
           }
         case DioExceptionType.unknown:
         default:
           _logger.severe('Unknown Dio Exception: ${error.message}');
-          throw UnknownException();
+          return Future.value( AppException.unknown());
       }
     } else if (error is AppException) {
       // Handle custom exceptions
       _logger.severe('AppException: ${error.toString()}');
-      throw error;
+      return Future.value(error);
     } else {
       // Handle other errors
       _logger.severe('Unexpected Error: ${error.toString()}');
-      throw UnknownException();
+      return Future.value( AppException.unknown());
     }
   }
 

@@ -23,16 +23,16 @@ class HomeWelcomeWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SpacerWidget.vertical(height: 5.h),
-                Flexible(
+                Expanded(
                   child: Text(
                     "Hello , Welcome",
-                    style: AppTextStyles.lightgray14regular,
+                    style: AppTextStyles.lightGray14Regular,
                   ),
                 ),
-                Flexible(
+                Expanded(
                   child: Text(
                     "Ashrf Atia Mostafa ",
-                    style: AppTextStyles.black16bold,
+                    style: AppTextStyles.darkGray16Bold,
                   ),
                 )
               ],

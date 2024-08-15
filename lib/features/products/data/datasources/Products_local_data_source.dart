@@ -1,28 +1,45 @@
-abstract class ProductsLocalDataSource {}
+import 'package:i_shop/core/hive/hive_service.dart';
+import 'package:i_shop/features/products/domain/entities/app_product.dart';
+import 'package:i_shop/core/error/exceptions_errors.dart';
 
-/*
+abstract class ProductsLocalDataSource {
+  Future<void> addFavorite(AppProduct appProduct);
+  Future<void> removeFavorite(String id);
+  Future<List<AppProduct>> getFavorites();
+}
+
 class ProductsLocalDataSourceImpl implements ProductsLocalDataSource {
-  final SharedPreferences sharedPreferences;
+  final HiveService<AppProduct> hiveService;
 
-  ProductsLocalDataSourceImpl({required this.sharedPreferences});
+  ProductsLocalDataSourceImpl({required this.hiveService});
 
   @override
-  Future<Unit> cacheSearchTexts(List<String> searchTexts) async {
- 
-    await sharedPreferences.setStringList(AppKeys.RECENT_SEARCH, searchTexts);
-    return Future.value(unit);
+  Future<void> addFavorite(AppProduct appProduct) async {
+    try {
+      await hiveService.put(appProduct.id.toString(), appProduct);
+    } catch (e) {
+      ErrorHandler.handleError(e);
+      rethrow;
+    }
   }
 
   @override
-  List<String> getCacheSearchTexts() {
-    final cachedSearchTexts =
-        sharedPreferences.getStringList(AppKeys.RECENT_SEARCH);
+  Future<void> removeFavorite(String id) async {
+    try {
+      await hiveService.delete(id);
+    } catch (e) {
+      ErrorHandler.handleError(e);
+      rethrow;
+    }
+  }
 
-    if (cachedSearchTexts != null) {
-      return cachedSearchTexts;
-    } else {
-      throw CacheErrorException();
+  @override
+  Future<List<AppProduct>> getFavorites() async {
+    try {
+      return await hiveService.getAll();
+    } catch (e) {
+      ErrorHandler.handleError(e);
+      rethrow;
     }
   }
 }
-*/

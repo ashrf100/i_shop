@@ -31,7 +31,7 @@ class _ProductReviewsState extends State<ProductReviews> {
         children: [
           Text(
             'Reviews',
-            style: AppTextStyles.darkGray16bold,
+            style: AppTextStyles.darkGray16Bold,
           ),
           SpacerWidget.vertical(height: 8.h),
           ...widget.reviews.asMap().entries.map<Widget>((entry) {
@@ -63,7 +63,7 @@ class _ProductReviewsState extends State<ProductReviews> {
                                     child: Text(
                                       review
                                           .reviewerName, // Access property directly
-                                      style: AppTextStyles.darkgray14regular
+                                      style: AppTextStyles.darkGray14Regular
                                           .copyWith(
                                               fontWeight: FontWeight.bold),
                                     ),
@@ -102,13 +102,13 @@ class _ProductReviewsState extends State<ProductReviews> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            review.comment, // Access property directly
-                            style: AppTextStyles.darkgray12regular,
+                            review.comment,
+                            style: AppTextStyles.gray14Regular,
                           ),
                           SpacerWidget.vertical(height: 4.h),
                           Text(
-                            'Rating: ${review.rating}', // Access property directly
-                            style: AppTextStyles.darkgray12regular,
+                            'Rating: ${review.rating}',
+                            style: AppTextStyles.gray14Regular,
                           ),
                         ],
                       ),
