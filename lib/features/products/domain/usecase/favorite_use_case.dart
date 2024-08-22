@@ -5,7 +5,7 @@ import 'package:i_shop/features/products/domain/entities/app_product.dart';
 import 'package:i_shop/features/products/domain/repositories/products_repository.dart';
 
 class AddFavoriteUseCase {
-  final ProductsRepostiory repostiory;
+  final ProductsRepository repostiory;
 
   AddFavoriteUseCase({required this.repostiory});
 
@@ -15,7 +15,7 @@ class AddFavoriteUseCase {
 }
 
 class RemoveFavoriteUseCase {
-  final ProductsRepostiory repostiory;
+  final ProductsRepository repostiory;
 
   RemoveFavoriteUseCase({required this.repostiory});
 
@@ -25,7 +25,7 @@ class RemoveFavoriteUseCase {
 }
 
 class GetFavoritesUseCase {
-  final ProductsRepostiory repostiory;
+  final ProductsRepository repostiory;
 
   GetFavoritesUseCase({required this.repostiory});
 

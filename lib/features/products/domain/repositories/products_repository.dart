@@ -4,7 +4,7 @@ import 'package:i_shop/core/error/app_exception.dart';
 import 'package:i_shop/features/products/domain/entities/app_category.dart';
 import 'package:i_shop/features/products/domain/entities/app_product.dart';
 
-abstract class ProductsRepostiory {
+abstract class ProductsRepository {
   Future<Either<AppException, Tuple2<List<AppProduct>, List<AppCategory>>>>
       getHomeData({
     required int limit,

@@ -7,4 +7,8 @@ class AppLinks {
   static const String category = '${serverLink}products/category/';
 
   static const String cart = '${serverLink}carts';
+
+  // Authentication Endpoints
+  static const String login = '${serverLink}auth/login';
+
 }

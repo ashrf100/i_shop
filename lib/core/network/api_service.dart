@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:i_shop/core/const/app_links.dart';
+import 'package:i_shop/features/auth/data/model/login_request_model.dart';
+import 'package:i_shop/features/auth/data/model/login_response_model.dart';
 import 'package:i_shop/features/cart/data/model/cart_model.dart';
 import 'package:i_shop/features/cart/data/model/cart_request_model.dart';
 import 'package:i_shop/features/products/data/models/categories_model.dart';
@@ -37,20 +39,22 @@ abstract class ApiService {
     @Query('skip') required int skip,
   });
 
-  // Fetch carts by user
   @GET('${AppLinks.cart}/user/{userId}')
   Future<CartResponseModel> getCartsByUser({
     @Path('userId') required int userId,
   });
 
-  // Add a new cart
   @POST('${AppLinks.cart}/add')
   Future<CartModel> addCart(@Body() AddCartRequestModel request);
 
-  // Update an existing cart
   @PUT('carts/{cartId}')
   Future<CartModel> updateCart({
     @Path('cartId') required int cartId,
     @Body() required UpdateCartRequestModel request,
+  });
+
+  @POST(AppLinks.login)
+  Future<LoginResponseModel> loginUser({
+    @Body() required LoginRequestModel request,
   });
 }

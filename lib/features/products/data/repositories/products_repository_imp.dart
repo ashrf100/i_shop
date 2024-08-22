@@ -9,7 +9,7 @@ import 'package:i_shop/features/products/domain/entities/app_category.dart';
 import 'package:i_shop/features/products/domain/entities/app_product.dart';
 import 'package:i_shop/features/products/domain/repositories/products_repository.dart';
 
-class ProductsRepositoryImpl implements ProductsRepostiory {
+class ProductsRepositoryImpl implements ProductsRepository {
   final ProductsRemoteDataSource productsRemoteDataSource;
   final ProductsLocalDataSource productsLocalDataSource;
 

@@ -19,15 +19,18 @@ class AppException with _$AppException implements Exception {
   factory AppException.hiveOperation(String errorMessage) =
       HiveOperationException;
   factory AppException.hiveDataNotFound() = HiveDataNotFoundException;
-
+  factory AppException.googleAuth(String errorMessage) = GoogleAuthException;
+  factory AppException.facebookAuth(String errorMessage) =
+      FaceBookAuthException;
   AppException._();
 
   String get message => when(
+        googleAuth: (errorMessage) => errorMessage,
+        facebookAuth: (errorMessage) => errorMessage,
         fetchData: () => 'Error During Communication: Please try again later.',
         badRequest: () =>
             'Invalid Request: The request could not be understood.',
-        unauthorized: () =>
-            'Unauthorized: Access is denied due to invalid credentials.',
+        unauthorized: () => 'Unauthorized:Invalid username or password.',
         notFound: () => 'Not Found: The requested resource could not be found.',
         internalServerError: () =>
             'Internal Server Error: Something went wrong on our end.',

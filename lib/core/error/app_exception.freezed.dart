@@ -32,6 +32,8 @@ mixin _$AppException {
     required TResult Function() hiveInitializationError,
     required TResult Function(String errorMessage) hiveOperation,
     required TResult Function() hiveDataNotFound,
+    required TResult Function(String errorMessage) googleAuth,
+    required TResult Function(String errorMessage) facebookAuth,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +52,8 @@ mixin _$AppException {
     TResult? Function()? hiveInitializationError,
     TResult? Function(String errorMessage)? hiveOperation,
     TResult? Function()? hiveDataNotFound,
+    TResult? Function(String errorMessage)? googleAuth,
+    TResult? Function(String errorMessage)? facebookAuth,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -68,6 +72,8 @@ mixin _$AppException {
     TResult Function()? hiveInitializationError,
     TResult Function(String errorMessage)? hiveOperation,
     TResult Function()? hiveDataNotFound,
+    TResult Function(String errorMessage)? googleAuth,
+    TResult Function(String errorMessage)? facebookAuth,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -90,6 +96,8 @@ mixin _$AppException {
         hiveInitializationError,
     required TResult Function(HiveOperationException value) hiveOperation,
     required TResult Function(HiveDataNotFoundException value) hiveDataNotFound,
+    required TResult Function(GoogleAuthException value) googleAuth,
+    required TResult Function(FaceBookAuthException value) facebookAuth,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -109,6 +117,8 @@ mixin _$AppException {
         hiveInitializationError,
     TResult? Function(HiveOperationException value)? hiveOperation,
     TResult? Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult? Function(GoogleAuthException value)? googleAuth,
+    TResult? Function(FaceBookAuthException value)? facebookAuth,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -128,6 +138,8 @@ mixin _$AppException {
         hiveInitializationError,
     TResult Function(HiveOperationException value)? hiveOperation,
     TResult Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult Function(GoogleAuthException value)? googleAuth,
+    TResult Function(FaceBookAuthException value)? facebookAuth,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -203,6 +215,8 @@ class _$FetchDataExceptionImpl extends FetchDataException {
     required TResult Function() hiveInitializationError,
     required TResult Function(String errorMessage) hiveOperation,
     required TResult Function() hiveDataNotFound,
+    required TResult Function(String errorMessage) googleAuth,
+    required TResult Function(String errorMessage) facebookAuth,
   }) {
     return fetchData();
   }
@@ -224,6 +238,8 @@ class _$FetchDataExceptionImpl extends FetchDataException {
     TResult? Function()? hiveInitializationError,
     TResult? Function(String errorMessage)? hiveOperation,
     TResult? Function()? hiveDataNotFound,
+    TResult? Function(String errorMessage)? googleAuth,
+    TResult? Function(String errorMessage)? facebookAuth,
   }) {
     return fetchData?.call();
   }
@@ -245,6 +261,8 @@ class _$FetchDataExceptionImpl extends FetchDataException {
     TResult Function()? hiveInitializationError,
     TResult Function(String errorMessage)? hiveOperation,
     TResult Function()? hiveDataNotFound,
+    TResult Function(String errorMessage)? googleAuth,
+    TResult Function(String errorMessage)? facebookAuth,
     required TResult orElse(),
   }) {
     if (fetchData != null) {
@@ -273,6 +291,8 @@ class _$FetchDataExceptionImpl extends FetchDataException {
         hiveInitializationError,
     required TResult Function(HiveOperationException value) hiveOperation,
     required TResult Function(HiveDataNotFoundException value) hiveDataNotFound,
+    required TResult Function(GoogleAuthException value) googleAuth,
+    required TResult Function(FaceBookAuthException value) facebookAuth,
   }) {
     return fetchData(this);
   }
@@ -295,6 +315,8 @@ class _$FetchDataExceptionImpl extends FetchDataException {
         hiveInitializationError,
     TResult? Function(HiveOperationException value)? hiveOperation,
     TResult? Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult? Function(GoogleAuthException value)? googleAuth,
+    TResult? Function(FaceBookAuthException value)? facebookAuth,
   }) {
     return fetchData?.call(this);
   }
@@ -317,6 +339,8 @@ class _$FetchDataExceptionImpl extends FetchDataException {
         hiveInitializationError,
     TResult Function(HiveOperationException value)? hiveOperation,
     TResult Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult Function(GoogleAuthException value)? googleAuth,
+    TResult Function(FaceBookAuthException value)? facebookAuth,
     required TResult orElse(),
   }) {
     if (fetchData != null) {
@@ -384,6 +408,8 @@ class _$BadRequestExceptionImpl extends BadRequestException {
     required TResult Function() hiveInitializationError,
     required TResult Function(String errorMessage) hiveOperation,
     required TResult Function() hiveDataNotFound,
+    required TResult Function(String errorMessage) googleAuth,
+    required TResult Function(String errorMessage) facebookAuth,
   }) {
     return badRequest();
   }
@@ -405,6 +431,8 @@ class _$BadRequestExceptionImpl extends BadRequestException {
     TResult? Function()? hiveInitializationError,
     TResult? Function(String errorMessage)? hiveOperation,
     TResult? Function()? hiveDataNotFound,
+    TResult? Function(String errorMessage)? googleAuth,
+    TResult? Function(String errorMessage)? facebookAuth,
   }) {
     return badRequest?.call();
   }
@@ -426,6 +454,8 @@ class _$BadRequestExceptionImpl extends BadRequestException {
     TResult Function()? hiveInitializationError,
     TResult Function(String errorMessage)? hiveOperation,
     TResult Function()? hiveDataNotFound,
+    TResult Function(String errorMessage)? googleAuth,
+    TResult Function(String errorMessage)? facebookAuth,
     required TResult orElse(),
   }) {
     if (badRequest != null) {
@@ -454,6 +484,8 @@ class _$BadRequestExceptionImpl extends BadRequestException {
         hiveInitializationError,
     required TResult Function(HiveOperationException value) hiveOperation,
     required TResult Function(HiveDataNotFoundException value) hiveDataNotFound,
+    required TResult Function(GoogleAuthException value) googleAuth,
+    required TResult Function(FaceBookAuthException value) facebookAuth,
   }) {
     return badRequest(this);
   }
@@ -476,6 +508,8 @@ class _$BadRequestExceptionImpl extends BadRequestException {
         hiveInitializationError,
     TResult? Function(HiveOperationException value)? hiveOperation,
     TResult? Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult? Function(GoogleAuthException value)? googleAuth,
+    TResult? Function(FaceBookAuthException value)? facebookAuth,
   }) {
     return badRequest?.call(this);
   }
@@ -498,6 +532,8 @@ class _$BadRequestExceptionImpl extends BadRequestException {
         hiveInitializationError,
     TResult Function(HiveOperationException value)? hiveOperation,
     TResult Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult Function(GoogleAuthException value)? googleAuth,
+    TResult Function(FaceBookAuthException value)? facebookAuth,
     required TResult orElse(),
   }) {
     if (badRequest != null) {
@@ -566,6 +602,8 @@ class _$UnauthorizedExceptionImpl extends UnauthorizedException {
     required TResult Function() hiveInitializationError,
     required TResult Function(String errorMessage) hiveOperation,
     required TResult Function() hiveDataNotFound,
+    required TResult Function(String errorMessage) googleAuth,
+    required TResult Function(String errorMessage) facebookAuth,
   }) {
     return unauthorized();
   }
@@ -587,6 +625,8 @@ class _$UnauthorizedExceptionImpl extends UnauthorizedException {
     TResult? Function()? hiveInitializationError,
     TResult? Function(String errorMessage)? hiveOperation,
     TResult? Function()? hiveDataNotFound,
+    TResult? Function(String errorMessage)? googleAuth,
+    TResult? Function(String errorMessage)? facebookAuth,
   }) {
     return unauthorized?.call();
   }
@@ -608,6 +648,8 @@ class _$UnauthorizedExceptionImpl extends UnauthorizedException {
     TResult Function()? hiveInitializationError,
     TResult Function(String errorMessage)? hiveOperation,
     TResult Function()? hiveDataNotFound,
+    TResult Function(String errorMessage)? googleAuth,
+    TResult Function(String errorMessage)? facebookAuth,
     required TResult orElse(),
   }) {
     if (unauthorized != null) {
@@ -636,6 +678,8 @@ class _$UnauthorizedExceptionImpl extends UnauthorizedException {
         hiveInitializationError,
     required TResult Function(HiveOperationException value) hiveOperation,
     required TResult Function(HiveDataNotFoundException value) hiveDataNotFound,
+    required TResult Function(GoogleAuthException value) googleAuth,
+    required TResult Function(FaceBookAuthException value) facebookAuth,
   }) {
     return unauthorized(this);
   }
@@ -658,6 +702,8 @@ class _$UnauthorizedExceptionImpl extends UnauthorizedException {
         hiveInitializationError,
     TResult? Function(HiveOperationException value)? hiveOperation,
     TResult? Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult? Function(GoogleAuthException value)? googleAuth,
+    TResult? Function(FaceBookAuthException value)? facebookAuth,
   }) {
     return unauthorized?.call(this);
   }
@@ -680,6 +726,8 @@ class _$UnauthorizedExceptionImpl extends UnauthorizedException {
         hiveInitializationError,
     TResult Function(HiveOperationException value)? hiveOperation,
     TResult Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult Function(GoogleAuthException value)? googleAuth,
+    TResult Function(FaceBookAuthException value)? facebookAuth,
     required TResult orElse(),
   }) {
     if (unauthorized != null) {
@@ -746,6 +794,8 @@ class _$NotFoundExceptionImpl extends NotFoundException {
     required TResult Function() hiveInitializationError,
     required TResult Function(String errorMessage) hiveOperation,
     required TResult Function() hiveDataNotFound,
+    required TResult Function(String errorMessage) googleAuth,
+    required TResult Function(String errorMessage) facebookAuth,
   }) {
     return notFound();
   }
@@ -767,6 +817,8 @@ class _$NotFoundExceptionImpl extends NotFoundException {
     TResult? Function()? hiveInitializationError,
     TResult? Function(String errorMessage)? hiveOperation,
     TResult? Function()? hiveDataNotFound,
+    TResult? Function(String errorMessage)? googleAuth,
+    TResult? Function(String errorMessage)? facebookAuth,
   }) {
     return notFound?.call();
   }
@@ -788,6 +840,8 @@ class _$NotFoundExceptionImpl extends NotFoundException {
     TResult Function()? hiveInitializationError,
     TResult Function(String errorMessage)? hiveOperation,
     TResult Function()? hiveDataNotFound,
+    TResult Function(String errorMessage)? googleAuth,
+    TResult Function(String errorMessage)? facebookAuth,
     required TResult orElse(),
   }) {
     if (notFound != null) {
@@ -816,6 +870,8 @@ class _$NotFoundExceptionImpl extends NotFoundException {
         hiveInitializationError,
     required TResult Function(HiveOperationException value) hiveOperation,
     required TResult Function(HiveDataNotFoundException value) hiveDataNotFound,
+    required TResult Function(GoogleAuthException value) googleAuth,
+    required TResult Function(FaceBookAuthException value) facebookAuth,
   }) {
     return notFound(this);
   }
@@ -838,6 +894,8 @@ class _$NotFoundExceptionImpl extends NotFoundException {
         hiveInitializationError,
     TResult? Function(HiveOperationException value)? hiveOperation,
     TResult? Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult? Function(GoogleAuthException value)? googleAuth,
+    TResult? Function(FaceBookAuthException value)? facebookAuth,
   }) {
     return notFound?.call(this);
   }
@@ -860,6 +918,8 @@ class _$NotFoundExceptionImpl extends NotFoundException {
         hiveInitializationError,
     TResult Function(HiveOperationException value)? hiveOperation,
     TResult Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult Function(GoogleAuthException value)? googleAuth,
+    TResult Function(FaceBookAuthException value)? facebookAuth,
     required TResult orElse(),
   }) {
     if (notFound != null) {
@@ -929,6 +989,8 @@ class _$InternalServerErrorExceptionImpl extends InternalServerErrorException {
     required TResult Function() hiveInitializationError,
     required TResult Function(String errorMessage) hiveOperation,
     required TResult Function() hiveDataNotFound,
+    required TResult Function(String errorMessage) googleAuth,
+    required TResult Function(String errorMessage) facebookAuth,
   }) {
     return internalServerError();
   }
@@ -950,6 +1012,8 @@ class _$InternalServerErrorExceptionImpl extends InternalServerErrorException {
     TResult? Function()? hiveInitializationError,
     TResult? Function(String errorMessage)? hiveOperation,
     TResult? Function()? hiveDataNotFound,
+    TResult? Function(String errorMessage)? googleAuth,
+    TResult? Function(String errorMessage)? facebookAuth,
   }) {
     return internalServerError?.call();
   }
@@ -971,6 +1035,8 @@ class _$InternalServerErrorExceptionImpl extends InternalServerErrorException {
     TResult Function()? hiveInitializationError,
     TResult Function(String errorMessage)? hiveOperation,
     TResult Function()? hiveDataNotFound,
+    TResult Function(String errorMessage)? googleAuth,
+    TResult Function(String errorMessage)? facebookAuth,
     required TResult orElse(),
   }) {
     if (internalServerError != null) {
@@ -999,6 +1065,8 @@ class _$InternalServerErrorExceptionImpl extends InternalServerErrorException {
         hiveInitializationError,
     required TResult Function(HiveOperationException value) hiveOperation,
     required TResult Function(HiveDataNotFoundException value) hiveDataNotFound,
+    required TResult Function(GoogleAuthException value) googleAuth,
+    required TResult Function(FaceBookAuthException value) facebookAuth,
   }) {
     return internalServerError(this);
   }
@@ -1021,6 +1089,8 @@ class _$InternalServerErrorExceptionImpl extends InternalServerErrorException {
         hiveInitializationError,
     TResult? Function(HiveOperationException value)? hiveOperation,
     TResult? Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult? Function(GoogleAuthException value)? googleAuth,
+    TResult? Function(FaceBookAuthException value)? facebookAuth,
   }) {
     return internalServerError?.call(this);
   }
@@ -1043,6 +1113,8 @@ class _$InternalServerErrorExceptionImpl extends InternalServerErrorException {
         hiveInitializationError,
     TResult Function(HiveOperationException value)? hiveOperation,
     TResult Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult Function(GoogleAuthException value)? googleAuth,
+    TResult Function(FaceBookAuthException value)? facebookAuth,
     required TResult orElse(),
   }) {
     if (internalServerError != null) {
@@ -1110,6 +1182,8 @@ class _$NoInternetExceptionImpl extends NoInternetException {
     required TResult Function() hiveInitializationError,
     required TResult Function(String errorMessage) hiveOperation,
     required TResult Function() hiveDataNotFound,
+    required TResult Function(String errorMessage) googleAuth,
+    required TResult Function(String errorMessage) facebookAuth,
   }) {
     return noInternet();
   }
@@ -1131,6 +1205,8 @@ class _$NoInternetExceptionImpl extends NoInternetException {
     TResult? Function()? hiveInitializationError,
     TResult? Function(String errorMessage)? hiveOperation,
     TResult? Function()? hiveDataNotFound,
+    TResult? Function(String errorMessage)? googleAuth,
+    TResult? Function(String errorMessage)? facebookAuth,
   }) {
     return noInternet?.call();
   }
@@ -1152,6 +1228,8 @@ class _$NoInternetExceptionImpl extends NoInternetException {
     TResult Function()? hiveInitializationError,
     TResult Function(String errorMessage)? hiveOperation,
     TResult Function()? hiveDataNotFound,
+    TResult Function(String errorMessage)? googleAuth,
+    TResult Function(String errorMessage)? facebookAuth,
     required TResult orElse(),
   }) {
     if (noInternet != null) {
@@ -1180,6 +1258,8 @@ class _$NoInternetExceptionImpl extends NoInternetException {
         hiveInitializationError,
     required TResult Function(HiveOperationException value) hiveOperation,
     required TResult Function(HiveDataNotFoundException value) hiveDataNotFound,
+    required TResult Function(GoogleAuthException value) googleAuth,
+    required TResult Function(FaceBookAuthException value) facebookAuth,
   }) {
     return noInternet(this);
   }
@@ -1202,6 +1282,8 @@ class _$NoInternetExceptionImpl extends NoInternetException {
         hiveInitializationError,
     TResult? Function(HiveOperationException value)? hiveOperation,
     TResult? Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult? Function(GoogleAuthException value)? googleAuth,
+    TResult? Function(FaceBookAuthException value)? facebookAuth,
   }) {
     return noInternet?.call(this);
   }
@@ -1224,6 +1306,8 @@ class _$NoInternetExceptionImpl extends NoInternetException {
         hiveInitializationError,
     TResult Function(HiveOperationException value)? hiveOperation,
     TResult Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult Function(GoogleAuthException value)? googleAuth,
+    TResult Function(FaceBookAuthException value)? facebookAuth,
     required TResult orElse(),
   }) {
     if (noInternet != null) {
@@ -1293,6 +1377,8 @@ class _$ConnectionTimeoutExceptionImpl extends ConnectionTimeoutException {
     required TResult Function() hiveInitializationError,
     required TResult Function(String errorMessage) hiveOperation,
     required TResult Function() hiveDataNotFound,
+    required TResult Function(String errorMessage) googleAuth,
+    required TResult Function(String errorMessage) facebookAuth,
   }) {
     return connectionTimeout();
   }
@@ -1314,6 +1400,8 @@ class _$ConnectionTimeoutExceptionImpl extends ConnectionTimeoutException {
     TResult? Function()? hiveInitializationError,
     TResult? Function(String errorMessage)? hiveOperation,
     TResult? Function()? hiveDataNotFound,
+    TResult? Function(String errorMessage)? googleAuth,
+    TResult? Function(String errorMessage)? facebookAuth,
   }) {
     return connectionTimeout?.call();
   }
@@ -1335,6 +1423,8 @@ class _$ConnectionTimeoutExceptionImpl extends ConnectionTimeoutException {
     TResult Function()? hiveInitializationError,
     TResult Function(String errorMessage)? hiveOperation,
     TResult Function()? hiveDataNotFound,
+    TResult Function(String errorMessage)? googleAuth,
+    TResult Function(String errorMessage)? facebookAuth,
     required TResult orElse(),
   }) {
     if (connectionTimeout != null) {
@@ -1363,6 +1453,8 @@ class _$ConnectionTimeoutExceptionImpl extends ConnectionTimeoutException {
         hiveInitializationError,
     required TResult Function(HiveOperationException value) hiveOperation,
     required TResult Function(HiveDataNotFoundException value) hiveDataNotFound,
+    required TResult Function(GoogleAuthException value) googleAuth,
+    required TResult Function(FaceBookAuthException value) facebookAuth,
   }) {
     return connectionTimeout(this);
   }
@@ -1385,6 +1477,8 @@ class _$ConnectionTimeoutExceptionImpl extends ConnectionTimeoutException {
         hiveInitializationError,
     TResult? Function(HiveOperationException value)? hiveOperation,
     TResult? Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult? Function(GoogleAuthException value)? googleAuth,
+    TResult? Function(FaceBookAuthException value)? facebookAuth,
   }) {
     return connectionTimeout?.call(this);
   }
@@ -1407,6 +1501,8 @@ class _$ConnectionTimeoutExceptionImpl extends ConnectionTimeoutException {
         hiveInitializationError,
     TResult Function(HiveOperationException value)? hiveOperation,
     TResult Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult Function(GoogleAuthException value)? googleAuth,
+    TResult Function(FaceBookAuthException value)? facebookAuth,
     required TResult orElse(),
   }) {
     if (connectionTimeout != null) {
@@ -1474,6 +1570,8 @@ class _$SendTimeoutExceptionImpl extends SendTimeoutException {
     required TResult Function() hiveInitializationError,
     required TResult Function(String errorMessage) hiveOperation,
     required TResult Function() hiveDataNotFound,
+    required TResult Function(String errorMessage) googleAuth,
+    required TResult Function(String errorMessage) facebookAuth,
   }) {
     return sendTimeout();
   }
@@ -1495,6 +1593,8 @@ class _$SendTimeoutExceptionImpl extends SendTimeoutException {
     TResult? Function()? hiveInitializationError,
     TResult? Function(String errorMessage)? hiveOperation,
     TResult? Function()? hiveDataNotFound,
+    TResult? Function(String errorMessage)? googleAuth,
+    TResult? Function(String errorMessage)? facebookAuth,
   }) {
     return sendTimeout?.call();
   }
@@ -1516,6 +1616,8 @@ class _$SendTimeoutExceptionImpl extends SendTimeoutException {
     TResult Function()? hiveInitializationError,
     TResult Function(String errorMessage)? hiveOperation,
     TResult Function()? hiveDataNotFound,
+    TResult Function(String errorMessage)? googleAuth,
+    TResult Function(String errorMessage)? facebookAuth,
     required TResult orElse(),
   }) {
     if (sendTimeout != null) {
@@ -1544,6 +1646,8 @@ class _$SendTimeoutExceptionImpl extends SendTimeoutException {
         hiveInitializationError,
     required TResult Function(HiveOperationException value) hiveOperation,
     required TResult Function(HiveDataNotFoundException value) hiveDataNotFound,
+    required TResult Function(GoogleAuthException value) googleAuth,
+    required TResult Function(FaceBookAuthException value) facebookAuth,
   }) {
     return sendTimeout(this);
   }
@@ -1566,6 +1670,8 @@ class _$SendTimeoutExceptionImpl extends SendTimeoutException {
         hiveInitializationError,
     TResult? Function(HiveOperationException value)? hiveOperation,
     TResult? Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult? Function(GoogleAuthException value)? googleAuth,
+    TResult? Function(FaceBookAuthException value)? facebookAuth,
   }) {
     return sendTimeout?.call(this);
   }
@@ -1588,6 +1694,8 @@ class _$SendTimeoutExceptionImpl extends SendTimeoutException {
         hiveInitializationError,
     TResult Function(HiveOperationException value)? hiveOperation,
     TResult Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult Function(GoogleAuthException value)? googleAuth,
+    TResult Function(FaceBookAuthException value)? facebookAuth,
     required TResult orElse(),
   }) {
     if (sendTimeout != null) {
@@ -1657,6 +1765,8 @@ class _$ReceiveTimeoutExceptionImpl extends ReceiveTimeoutException {
     required TResult Function() hiveInitializationError,
     required TResult Function(String errorMessage) hiveOperation,
     required TResult Function() hiveDataNotFound,
+    required TResult Function(String errorMessage) googleAuth,
+    required TResult Function(String errorMessage) facebookAuth,
   }) {
     return receiveTimeout();
   }
@@ -1678,6 +1788,8 @@ class _$ReceiveTimeoutExceptionImpl extends ReceiveTimeoutException {
     TResult? Function()? hiveInitializationError,
     TResult? Function(String errorMessage)? hiveOperation,
     TResult? Function()? hiveDataNotFound,
+    TResult? Function(String errorMessage)? googleAuth,
+    TResult? Function(String errorMessage)? facebookAuth,
   }) {
     return receiveTimeout?.call();
   }
@@ -1699,6 +1811,8 @@ class _$ReceiveTimeoutExceptionImpl extends ReceiveTimeoutException {
     TResult Function()? hiveInitializationError,
     TResult Function(String errorMessage)? hiveOperation,
     TResult Function()? hiveDataNotFound,
+    TResult Function(String errorMessage)? googleAuth,
+    TResult Function(String errorMessage)? facebookAuth,
     required TResult orElse(),
   }) {
     if (receiveTimeout != null) {
@@ -1727,6 +1841,8 @@ class _$ReceiveTimeoutExceptionImpl extends ReceiveTimeoutException {
         hiveInitializationError,
     required TResult Function(HiveOperationException value) hiveOperation,
     required TResult Function(HiveDataNotFoundException value) hiveDataNotFound,
+    required TResult Function(GoogleAuthException value) googleAuth,
+    required TResult Function(FaceBookAuthException value) facebookAuth,
   }) {
     return receiveTimeout(this);
   }
@@ -1749,6 +1865,8 @@ class _$ReceiveTimeoutExceptionImpl extends ReceiveTimeoutException {
         hiveInitializationError,
     TResult? Function(HiveOperationException value)? hiveOperation,
     TResult? Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult? Function(GoogleAuthException value)? googleAuth,
+    TResult? Function(FaceBookAuthException value)? facebookAuth,
   }) {
     return receiveTimeout?.call(this);
   }
@@ -1771,6 +1889,8 @@ class _$ReceiveTimeoutExceptionImpl extends ReceiveTimeoutException {
         hiveInitializationError,
     TResult Function(HiveOperationException value)? hiveOperation,
     TResult Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult Function(GoogleAuthException value)? googleAuth,
+    TResult Function(FaceBookAuthException value)? facebookAuth,
     required TResult orElse(),
   }) {
     if (receiveTimeout != null) {
@@ -1840,6 +1960,8 @@ class _$RequestCancelledExceptionImpl extends RequestCancelledException {
     required TResult Function() hiveInitializationError,
     required TResult Function(String errorMessage) hiveOperation,
     required TResult Function() hiveDataNotFound,
+    required TResult Function(String errorMessage) googleAuth,
+    required TResult Function(String errorMessage) facebookAuth,
   }) {
     return requestCancelled();
   }
@@ -1861,6 +1983,8 @@ class _$RequestCancelledExceptionImpl extends RequestCancelledException {
     TResult? Function()? hiveInitializationError,
     TResult? Function(String errorMessage)? hiveOperation,
     TResult? Function()? hiveDataNotFound,
+    TResult? Function(String errorMessage)? googleAuth,
+    TResult? Function(String errorMessage)? facebookAuth,
   }) {
     return requestCancelled?.call();
   }
@@ -1882,6 +2006,8 @@ class _$RequestCancelledExceptionImpl extends RequestCancelledException {
     TResult Function()? hiveInitializationError,
     TResult Function(String errorMessage)? hiveOperation,
     TResult Function()? hiveDataNotFound,
+    TResult Function(String errorMessage)? googleAuth,
+    TResult Function(String errorMessage)? facebookAuth,
     required TResult orElse(),
   }) {
     if (requestCancelled != null) {
@@ -1910,6 +2036,8 @@ class _$RequestCancelledExceptionImpl extends RequestCancelledException {
         hiveInitializationError,
     required TResult Function(HiveOperationException value) hiveOperation,
     required TResult Function(HiveDataNotFoundException value) hiveDataNotFound,
+    required TResult Function(GoogleAuthException value) googleAuth,
+    required TResult Function(FaceBookAuthException value) facebookAuth,
   }) {
     return requestCancelled(this);
   }
@@ -1932,6 +2060,8 @@ class _$RequestCancelledExceptionImpl extends RequestCancelledException {
         hiveInitializationError,
     TResult? Function(HiveOperationException value)? hiveOperation,
     TResult? Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult? Function(GoogleAuthException value)? googleAuth,
+    TResult? Function(FaceBookAuthException value)? facebookAuth,
   }) {
     return requestCancelled?.call(this);
   }
@@ -1954,6 +2084,8 @@ class _$RequestCancelledExceptionImpl extends RequestCancelledException {
         hiveInitializationError,
     TResult Function(HiveOperationException value)? hiveOperation,
     TResult Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult Function(GoogleAuthException value)? googleAuth,
+    TResult Function(FaceBookAuthException value)? facebookAuth,
     required TResult orElse(),
   }) {
     if (requestCancelled != null) {
@@ -2020,6 +2152,8 @@ class _$UnknownExceptionImpl extends UnknownException {
     required TResult Function() hiveInitializationError,
     required TResult Function(String errorMessage) hiveOperation,
     required TResult Function() hiveDataNotFound,
+    required TResult Function(String errorMessage) googleAuth,
+    required TResult Function(String errorMessage) facebookAuth,
   }) {
     return unknown();
   }
@@ -2041,6 +2175,8 @@ class _$UnknownExceptionImpl extends UnknownException {
     TResult? Function()? hiveInitializationError,
     TResult? Function(String errorMessage)? hiveOperation,
     TResult? Function()? hiveDataNotFound,
+    TResult? Function(String errorMessage)? googleAuth,
+    TResult? Function(String errorMessage)? facebookAuth,
   }) {
     return unknown?.call();
   }
@@ -2062,6 +2198,8 @@ class _$UnknownExceptionImpl extends UnknownException {
     TResult Function()? hiveInitializationError,
     TResult Function(String errorMessage)? hiveOperation,
     TResult Function()? hiveDataNotFound,
+    TResult Function(String errorMessage)? googleAuth,
+    TResult Function(String errorMessage)? facebookAuth,
     required TResult orElse(),
   }) {
     if (unknown != null) {
@@ -2090,6 +2228,8 @@ class _$UnknownExceptionImpl extends UnknownException {
         hiveInitializationError,
     required TResult Function(HiveOperationException value) hiveOperation,
     required TResult Function(HiveDataNotFoundException value) hiveDataNotFound,
+    required TResult Function(GoogleAuthException value) googleAuth,
+    required TResult Function(FaceBookAuthException value) facebookAuth,
   }) {
     return unknown(this);
   }
@@ -2112,6 +2252,8 @@ class _$UnknownExceptionImpl extends UnknownException {
         hiveInitializationError,
     TResult? Function(HiveOperationException value)? hiveOperation,
     TResult? Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult? Function(GoogleAuthException value)? googleAuth,
+    TResult? Function(FaceBookAuthException value)? facebookAuth,
   }) {
     return unknown?.call(this);
   }
@@ -2134,6 +2276,8 @@ class _$UnknownExceptionImpl extends UnknownException {
         hiveInitializationError,
     TResult Function(HiveOperationException value)? hiveOperation,
     TResult Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult Function(GoogleAuthException value)? googleAuth,
+    TResult Function(FaceBookAuthException value)? facebookAuth,
     required TResult orElse(),
   }) {
     if (unknown != null) {
@@ -2203,6 +2347,8 @@ class _$HiveInitializationExceptionImpl extends HiveInitializationException {
     required TResult Function() hiveInitializationError,
     required TResult Function(String errorMessage) hiveOperation,
     required TResult Function() hiveDataNotFound,
+    required TResult Function(String errorMessage) googleAuth,
+    required TResult Function(String errorMessage) facebookAuth,
   }) {
     return hiveInitializationError();
   }
@@ -2224,6 +2370,8 @@ class _$HiveInitializationExceptionImpl extends HiveInitializationException {
     TResult? Function()? hiveInitializationError,
     TResult? Function(String errorMessage)? hiveOperation,
     TResult? Function()? hiveDataNotFound,
+    TResult? Function(String errorMessage)? googleAuth,
+    TResult? Function(String errorMessage)? facebookAuth,
   }) {
     return hiveInitializationError?.call();
   }
@@ -2245,6 +2393,8 @@ class _$HiveInitializationExceptionImpl extends HiveInitializationException {
     TResult Function()? hiveInitializationError,
     TResult Function(String errorMessage)? hiveOperation,
     TResult Function()? hiveDataNotFound,
+    TResult Function(String errorMessage)? googleAuth,
+    TResult Function(String errorMessage)? facebookAuth,
     required TResult orElse(),
   }) {
     if (hiveInitializationError != null) {
@@ -2273,6 +2423,8 @@ class _$HiveInitializationExceptionImpl extends HiveInitializationException {
         hiveInitializationError,
     required TResult Function(HiveOperationException value) hiveOperation,
     required TResult Function(HiveDataNotFoundException value) hiveDataNotFound,
+    required TResult Function(GoogleAuthException value) googleAuth,
+    required TResult Function(FaceBookAuthException value) facebookAuth,
   }) {
     return hiveInitializationError(this);
   }
@@ -2295,6 +2447,8 @@ class _$HiveInitializationExceptionImpl extends HiveInitializationException {
         hiveInitializationError,
     TResult? Function(HiveOperationException value)? hiveOperation,
     TResult? Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult? Function(GoogleAuthException value)? googleAuth,
+    TResult? Function(FaceBookAuthException value)? facebookAuth,
   }) {
     return hiveInitializationError?.call(this);
   }
@@ -2317,6 +2471,8 @@ class _$HiveInitializationExceptionImpl extends HiveInitializationException {
         hiveInitializationError,
     TResult Function(HiveOperationException value)? hiveOperation,
     TResult Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult Function(GoogleAuthException value)? googleAuth,
+    TResult Function(FaceBookAuthException value)? facebookAuth,
     required TResult orElse(),
   }) {
     if (hiveInitializationError != null) {
@@ -2413,6 +2569,8 @@ class _$HiveOperationExceptionImpl extends HiveOperationException {
     required TResult Function() hiveInitializationError,
     required TResult Function(String errorMessage) hiveOperation,
     required TResult Function() hiveDataNotFound,
+    required TResult Function(String errorMessage) googleAuth,
+    required TResult Function(String errorMessage) facebookAuth,
   }) {
     return hiveOperation(errorMessage);
   }
@@ -2434,6 +2592,8 @@ class _$HiveOperationExceptionImpl extends HiveOperationException {
     TResult? Function()? hiveInitializationError,
     TResult? Function(String errorMessage)? hiveOperation,
     TResult? Function()? hiveDataNotFound,
+    TResult? Function(String errorMessage)? googleAuth,
+    TResult? Function(String errorMessage)? facebookAuth,
   }) {
     return hiveOperation?.call(errorMessage);
   }
@@ -2455,6 +2615,8 @@ class _$HiveOperationExceptionImpl extends HiveOperationException {
     TResult Function()? hiveInitializationError,
     TResult Function(String errorMessage)? hiveOperation,
     TResult Function()? hiveDataNotFound,
+    TResult Function(String errorMessage)? googleAuth,
+    TResult Function(String errorMessage)? facebookAuth,
     required TResult orElse(),
   }) {
     if (hiveOperation != null) {
@@ -2483,6 +2645,8 @@ class _$HiveOperationExceptionImpl extends HiveOperationException {
         hiveInitializationError,
     required TResult Function(HiveOperationException value) hiveOperation,
     required TResult Function(HiveDataNotFoundException value) hiveDataNotFound,
+    required TResult Function(GoogleAuthException value) googleAuth,
+    required TResult Function(FaceBookAuthException value) facebookAuth,
   }) {
     return hiveOperation(this);
   }
@@ -2505,6 +2669,8 @@ class _$HiveOperationExceptionImpl extends HiveOperationException {
         hiveInitializationError,
     TResult? Function(HiveOperationException value)? hiveOperation,
     TResult? Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult? Function(GoogleAuthException value)? googleAuth,
+    TResult? Function(FaceBookAuthException value)? facebookAuth,
   }) {
     return hiveOperation?.call(this);
   }
@@ -2527,6 +2693,8 @@ class _$HiveOperationExceptionImpl extends HiveOperationException {
         hiveInitializationError,
     TResult Function(HiveOperationException value)? hiveOperation,
     TResult Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult Function(GoogleAuthException value)? googleAuth,
+    TResult Function(FaceBookAuthException value)? facebookAuth,
     required TResult orElse(),
   }) {
     if (hiveOperation != null) {
@@ -2602,6 +2770,8 @@ class _$HiveDataNotFoundExceptionImpl extends HiveDataNotFoundException {
     required TResult Function() hiveInitializationError,
     required TResult Function(String errorMessage) hiveOperation,
     required TResult Function() hiveDataNotFound,
+    required TResult Function(String errorMessage) googleAuth,
+    required TResult Function(String errorMessage) facebookAuth,
   }) {
     return hiveDataNotFound();
   }
@@ -2623,6 +2793,8 @@ class _$HiveDataNotFoundExceptionImpl extends HiveDataNotFoundException {
     TResult? Function()? hiveInitializationError,
     TResult? Function(String errorMessage)? hiveOperation,
     TResult? Function()? hiveDataNotFound,
+    TResult? Function(String errorMessage)? googleAuth,
+    TResult? Function(String errorMessage)? facebookAuth,
   }) {
     return hiveDataNotFound?.call();
   }
@@ -2644,6 +2816,8 @@ class _$HiveDataNotFoundExceptionImpl extends HiveDataNotFoundException {
     TResult Function()? hiveInitializationError,
     TResult Function(String errorMessage)? hiveOperation,
     TResult Function()? hiveDataNotFound,
+    TResult Function(String errorMessage)? googleAuth,
+    TResult Function(String errorMessage)? facebookAuth,
     required TResult orElse(),
   }) {
     if (hiveDataNotFound != null) {
@@ -2672,6 +2846,8 @@ class _$HiveDataNotFoundExceptionImpl extends HiveDataNotFoundException {
         hiveInitializationError,
     required TResult Function(HiveOperationException value) hiveOperation,
     required TResult Function(HiveDataNotFoundException value) hiveDataNotFound,
+    required TResult Function(GoogleAuthException value) googleAuth,
+    required TResult Function(FaceBookAuthException value) facebookAuth,
   }) {
     return hiveDataNotFound(this);
   }
@@ -2694,6 +2870,8 @@ class _$HiveDataNotFoundExceptionImpl extends HiveDataNotFoundException {
         hiveInitializationError,
     TResult? Function(HiveOperationException value)? hiveOperation,
     TResult? Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult? Function(GoogleAuthException value)? googleAuth,
+    TResult? Function(FaceBookAuthException value)? facebookAuth,
   }) {
     return hiveDataNotFound?.call(this);
   }
@@ -2716,6 +2894,8 @@ class _$HiveDataNotFoundExceptionImpl extends HiveDataNotFoundException {
         hiveInitializationError,
     TResult Function(HiveOperationException value)? hiveOperation,
     TResult Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult Function(GoogleAuthException value)? googleAuth,
+    TResult Function(FaceBookAuthException value)? facebookAuth,
     required TResult orElse(),
   }) {
     if (hiveDataNotFound != null) {
@@ -2728,4 +2908,457 @@ class _$HiveDataNotFoundExceptionImpl extends HiveDataNotFoundException {
 abstract class HiveDataNotFoundException extends AppException {
   factory HiveDataNotFoundException() = _$HiveDataNotFoundExceptionImpl;
   HiveDataNotFoundException._() : super._();
+}
+
+/// @nodoc
+abstract class _$$GoogleAuthExceptionImplCopyWith<$Res> {
+  factory _$$GoogleAuthExceptionImplCopyWith(_$GoogleAuthExceptionImpl value,
+          $Res Function(_$GoogleAuthExceptionImpl) then) =
+      __$$GoogleAuthExceptionImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String errorMessage});
+}
+
+/// @nodoc
+class __$$GoogleAuthExceptionImplCopyWithImpl<$Res>
+    extends _$AppExceptionCopyWithImpl<$Res, _$GoogleAuthExceptionImpl>
+    implements _$$GoogleAuthExceptionImplCopyWith<$Res> {
+  __$$GoogleAuthExceptionImplCopyWithImpl(_$GoogleAuthExceptionImpl _value,
+      $Res Function(_$GoogleAuthExceptionImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? errorMessage = null,
+  }) {
+    return _then(_$GoogleAuthExceptionImpl(
+      null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GoogleAuthExceptionImpl extends GoogleAuthException {
+  _$GoogleAuthExceptionImpl(this.errorMessage) : super._();
+
+  @override
+  final String errorMessage;
+
+  @override
+  String toString() {
+    return 'AppException.googleAuth(errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GoogleAuthExceptionImpl &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, errorMessage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GoogleAuthExceptionImplCopyWith<_$GoogleAuthExceptionImpl> get copyWith =>
+      __$$GoogleAuthExceptionImplCopyWithImpl<_$GoogleAuthExceptionImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchData,
+    required TResult Function() badRequest,
+    required TResult Function() unauthorized,
+    required TResult Function() notFound,
+    required TResult Function() internalServerError,
+    required TResult Function() noInternet,
+    required TResult Function() connectionTimeout,
+    required TResult Function() sendTimeout,
+    required TResult Function() receiveTimeout,
+    required TResult Function() requestCancelled,
+    required TResult Function() unknown,
+    required TResult Function() hiveInitializationError,
+    required TResult Function(String errorMessage) hiveOperation,
+    required TResult Function() hiveDataNotFound,
+    required TResult Function(String errorMessage) googleAuth,
+    required TResult Function(String errorMessage) facebookAuth,
+  }) {
+    return googleAuth(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchData,
+    TResult? Function()? badRequest,
+    TResult? Function()? unauthorized,
+    TResult? Function()? notFound,
+    TResult? Function()? internalServerError,
+    TResult? Function()? noInternet,
+    TResult? Function()? connectionTimeout,
+    TResult? Function()? sendTimeout,
+    TResult? Function()? receiveTimeout,
+    TResult? Function()? requestCancelled,
+    TResult? Function()? unknown,
+    TResult? Function()? hiveInitializationError,
+    TResult? Function(String errorMessage)? hiveOperation,
+    TResult? Function()? hiveDataNotFound,
+    TResult? Function(String errorMessage)? googleAuth,
+    TResult? Function(String errorMessage)? facebookAuth,
+  }) {
+    return googleAuth?.call(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchData,
+    TResult Function()? badRequest,
+    TResult Function()? unauthorized,
+    TResult Function()? notFound,
+    TResult Function()? internalServerError,
+    TResult Function()? noInternet,
+    TResult Function()? connectionTimeout,
+    TResult Function()? sendTimeout,
+    TResult Function()? receiveTimeout,
+    TResult Function()? requestCancelled,
+    TResult Function()? unknown,
+    TResult Function()? hiveInitializationError,
+    TResult Function(String errorMessage)? hiveOperation,
+    TResult Function()? hiveDataNotFound,
+    TResult Function(String errorMessage)? googleAuth,
+    TResult Function(String errorMessage)? facebookAuth,
+    required TResult orElse(),
+  }) {
+    if (googleAuth != null) {
+      return googleAuth(errorMessage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FetchDataException value) fetchData,
+    required TResult Function(BadRequestException value) badRequest,
+    required TResult Function(UnauthorizedException value) unauthorized,
+    required TResult Function(NotFoundException value) notFound,
+    required TResult Function(InternalServerErrorException value)
+        internalServerError,
+    required TResult Function(NoInternetException value) noInternet,
+    required TResult Function(ConnectionTimeoutException value)
+        connectionTimeout,
+    required TResult Function(SendTimeoutException value) sendTimeout,
+    required TResult Function(ReceiveTimeoutException value) receiveTimeout,
+    required TResult Function(RequestCancelledException value) requestCancelled,
+    required TResult Function(UnknownException value) unknown,
+    required TResult Function(HiveInitializationException value)
+        hiveInitializationError,
+    required TResult Function(HiveOperationException value) hiveOperation,
+    required TResult Function(HiveDataNotFoundException value) hiveDataNotFound,
+    required TResult Function(GoogleAuthException value) googleAuth,
+    required TResult Function(FaceBookAuthException value) facebookAuth,
+  }) {
+    return googleAuth(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FetchDataException value)? fetchData,
+    TResult? Function(BadRequestException value)? badRequest,
+    TResult? Function(UnauthorizedException value)? unauthorized,
+    TResult? Function(NotFoundException value)? notFound,
+    TResult? Function(InternalServerErrorException value)? internalServerError,
+    TResult? Function(NoInternetException value)? noInternet,
+    TResult? Function(ConnectionTimeoutException value)? connectionTimeout,
+    TResult? Function(SendTimeoutException value)? sendTimeout,
+    TResult? Function(ReceiveTimeoutException value)? receiveTimeout,
+    TResult? Function(RequestCancelledException value)? requestCancelled,
+    TResult? Function(UnknownException value)? unknown,
+    TResult? Function(HiveInitializationException value)?
+        hiveInitializationError,
+    TResult? Function(HiveOperationException value)? hiveOperation,
+    TResult? Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult? Function(GoogleAuthException value)? googleAuth,
+    TResult? Function(FaceBookAuthException value)? facebookAuth,
+  }) {
+    return googleAuth?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FetchDataException value)? fetchData,
+    TResult Function(BadRequestException value)? badRequest,
+    TResult Function(UnauthorizedException value)? unauthorized,
+    TResult Function(NotFoundException value)? notFound,
+    TResult Function(InternalServerErrorException value)? internalServerError,
+    TResult Function(NoInternetException value)? noInternet,
+    TResult Function(ConnectionTimeoutException value)? connectionTimeout,
+    TResult Function(SendTimeoutException value)? sendTimeout,
+    TResult Function(ReceiveTimeoutException value)? receiveTimeout,
+    TResult Function(RequestCancelledException value)? requestCancelled,
+    TResult Function(UnknownException value)? unknown,
+    TResult Function(HiveInitializationException value)?
+        hiveInitializationError,
+    TResult Function(HiveOperationException value)? hiveOperation,
+    TResult Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult Function(GoogleAuthException value)? googleAuth,
+    TResult Function(FaceBookAuthException value)? facebookAuth,
+    required TResult orElse(),
+  }) {
+    if (googleAuth != null) {
+      return googleAuth(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GoogleAuthException extends AppException {
+  factory GoogleAuthException(final String errorMessage) =
+      _$GoogleAuthExceptionImpl;
+  GoogleAuthException._() : super._();
+
+  String get errorMessage;
+  @JsonKey(ignore: true)
+  _$$GoogleAuthExceptionImplCopyWith<_$GoogleAuthExceptionImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FaceBookAuthExceptionImplCopyWith<$Res> {
+  factory _$$FaceBookAuthExceptionImplCopyWith(
+          _$FaceBookAuthExceptionImpl value,
+          $Res Function(_$FaceBookAuthExceptionImpl) then) =
+      __$$FaceBookAuthExceptionImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String errorMessage});
+}
+
+/// @nodoc
+class __$$FaceBookAuthExceptionImplCopyWithImpl<$Res>
+    extends _$AppExceptionCopyWithImpl<$Res, _$FaceBookAuthExceptionImpl>
+    implements _$$FaceBookAuthExceptionImplCopyWith<$Res> {
+  __$$FaceBookAuthExceptionImplCopyWithImpl(_$FaceBookAuthExceptionImpl _value,
+      $Res Function(_$FaceBookAuthExceptionImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? errorMessage = null,
+  }) {
+    return _then(_$FaceBookAuthExceptionImpl(
+      null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FaceBookAuthExceptionImpl extends FaceBookAuthException {
+  _$FaceBookAuthExceptionImpl(this.errorMessage) : super._();
+
+  @override
+  final String errorMessage;
+
+  @override
+  String toString() {
+    return 'AppException.facebookAuth(errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FaceBookAuthExceptionImpl &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, errorMessage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FaceBookAuthExceptionImplCopyWith<_$FaceBookAuthExceptionImpl>
+      get copyWith => __$$FaceBookAuthExceptionImplCopyWithImpl<
+          _$FaceBookAuthExceptionImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchData,
+    required TResult Function() badRequest,
+    required TResult Function() unauthorized,
+    required TResult Function() notFound,
+    required TResult Function() internalServerError,
+    required TResult Function() noInternet,
+    required TResult Function() connectionTimeout,
+    required TResult Function() sendTimeout,
+    required TResult Function() receiveTimeout,
+    required TResult Function() requestCancelled,
+    required TResult Function() unknown,
+    required TResult Function() hiveInitializationError,
+    required TResult Function(String errorMessage) hiveOperation,
+    required TResult Function() hiveDataNotFound,
+    required TResult Function(String errorMessage) googleAuth,
+    required TResult Function(String errorMessage) facebookAuth,
+  }) {
+    return facebookAuth(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchData,
+    TResult? Function()? badRequest,
+    TResult? Function()? unauthorized,
+    TResult? Function()? notFound,
+    TResult? Function()? internalServerError,
+    TResult? Function()? noInternet,
+    TResult? Function()? connectionTimeout,
+    TResult? Function()? sendTimeout,
+    TResult? Function()? receiveTimeout,
+    TResult? Function()? requestCancelled,
+    TResult? Function()? unknown,
+    TResult? Function()? hiveInitializationError,
+    TResult? Function(String errorMessage)? hiveOperation,
+    TResult? Function()? hiveDataNotFound,
+    TResult? Function(String errorMessage)? googleAuth,
+    TResult? Function(String errorMessage)? facebookAuth,
+  }) {
+    return facebookAuth?.call(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchData,
+    TResult Function()? badRequest,
+    TResult Function()? unauthorized,
+    TResult Function()? notFound,
+    TResult Function()? internalServerError,
+    TResult Function()? noInternet,
+    TResult Function()? connectionTimeout,
+    TResult Function()? sendTimeout,
+    TResult Function()? receiveTimeout,
+    TResult Function()? requestCancelled,
+    TResult Function()? unknown,
+    TResult Function()? hiveInitializationError,
+    TResult Function(String errorMessage)? hiveOperation,
+    TResult Function()? hiveDataNotFound,
+    TResult Function(String errorMessage)? googleAuth,
+    TResult Function(String errorMessage)? facebookAuth,
+    required TResult orElse(),
+  }) {
+    if (facebookAuth != null) {
+      return facebookAuth(errorMessage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FetchDataException value) fetchData,
+    required TResult Function(BadRequestException value) badRequest,
+    required TResult Function(UnauthorizedException value) unauthorized,
+    required TResult Function(NotFoundException value) notFound,
+    required TResult Function(InternalServerErrorException value)
+        internalServerError,
+    required TResult Function(NoInternetException value) noInternet,
+    required TResult Function(ConnectionTimeoutException value)
+        connectionTimeout,
+    required TResult Function(SendTimeoutException value) sendTimeout,
+    required TResult Function(ReceiveTimeoutException value) receiveTimeout,
+    required TResult Function(RequestCancelledException value) requestCancelled,
+    required TResult Function(UnknownException value) unknown,
+    required TResult Function(HiveInitializationException value)
+        hiveInitializationError,
+    required TResult Function(HiveOperationException value) hiveOperation,
+    required TResult Function(HiveDataNotFoundException value) hiveDataNotFound,
+    required TResult Function(GoogleAuthException value) googleAuth,
+    required TResult Function(FaceBookAuthException value) facebookAuth,
+  }) {
+    return facebookAuth(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FetchDataException value)? fetchData,
+    TResult? Function(BadRequestException value)? badRequest,
+    TResult? Function(UnauthorizedException value)? unauthorized,
+    TResult? Function(NotFoundException value)? notFound,
+    TResult? Function(InternalServerErrorException value)? internalServerError,
+    TResult? Function(NoInternetException value)? noInternet,
+    TResult? Function(ConnectionTimeoutException value)? connectionTimeout,
+    TResult? Function(SendTimeoutException value)? sendTimeout,
+    TResult? Function(ReceiveTimeoutException value)? receiveTimeout,
+    TResult? Function(RequestCancelledException value)? requestCancelled,
+    TResult? Function(UnknownException value)? unknown,
+    TResult? Function(HiveInitializationException value)?
+        hiveInitializationError,
+    TResult? Function(HiveOperationException value)? hiveOperation,
+    TResult? Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult? Function(GoogleAuthException value)? googleAuth,
+    TResult? Function(FaceBookAuthException value)? facebookAuth,
+  }) {
+    return facebookAuth?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FetchDataException value)? fetchData,
+    TResult Function(BadRequestException value)? badRequest,
+    TResult Function(UnauthorizedException value)? unauthorized,
+    TResult Function(NotFoundException value)? notFound,
+    TResult Function(InternalServerErrorException value)? internalServerError,
+    TResult Function(NoInternetException value)? noInternet,
+    TResult Function(ConnectionTimeoutException value)? connectionTimeout,
+    TResult Function(SendTimeoutException value)? sendTimeout,
+    TResult Function(ReceiveTimeoutException value)? receiveTimeout,
+    TResult Function(RequestCancelledException value)? requestCancelled,
+    TResult Function(UnknownException value)? unknown,
+    TResult Function(HiveInitializationException value)?
+        hiveInitializationError,
+    TResult Function(HiveOperationException value)? hiveOperation,
+    TResult Function(HiveDataNotFoundException value)? hiveDataNotFound,
+    TResult Function(GoogleAuthException value)? googleAuth,
+    TResult Function(FaceBookAuthException value)? facebookAuth,
+    required TResult orElse(),
+  }) {
+    if (facebookAuth != null) {
+      return facebookAuth(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FaceBookAuthException extends AppException {
+  factory FaceBookAuthException(final String errorMessage) =
+      _$FaceBookAuthExceptionImpl;
+  FaceBookAuthException._() : super._();
+
+  String get errorMessage;
+  @JsonKey(ignore: true)
+  _$$FaceBookAuthExceptionImplCopyWith<_$FaceBookAuthExceptionImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

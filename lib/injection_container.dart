@@ -1,9 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:i_shop/core/const/app_assets.dart';
+import 'package:i_shop/core/firebase/firebase_auth_services.dart';
 import 'package:i_shop/core/network/api_service.dart';
 import 'package:i_shop/core/network/dio_factory.dart';
 import 'package:i_shop/core/hive/hive_service.dart';
+import 'package:i_shop/core/widgets/bottom_nav_bar/cubit/bottom_nav_cubit_cubit.dart';
+import 'package:i_shop/features/auth/data/datasources/auth_remote_data_source.dart';
+import 'package:i_shop/features/auth/data/repositories/auth_repository_imp.dart';
+import 'package:i_shop/features/auth/domain/repositories/auth_repository.dart';
+import 'package:i_shop/features/auth/domain/usecase/auth_usecase.dart';
+import 'package:i_shop/features/auth/presentation/bloc/login_bloc.dart';
 import 'package:i_shop/features/cart/domain/repository/cart_repository.dart';
 import 'package:i_shop/features/cart/domain/usecase/cart_usecase.dart';
 import 'package:i_shop/features/products/data/datasources/products_remote_data_source.dart';
@@ -21,78 +28,140 @@ import 'package:i_shop/features/cart/presentation/bloc/cart_bloc.dart';
 
 final sl = GetIt.instance;
 
+/// Registers all dependencies with the [GetIt] instance.
+/// This function is usually called at app startup.
 Future<void> init() async {
   // External
-  Dio dio = DioFactory.getDio();
+  final Dio dio = DioFactory.getDio();
 
-  // Core
+  // Core Services
   sl.registerLazySingleton<ApiService>(() => ApiService(dio));
   sl.registerLazySingleton<HiveService<AppProduct>>(
-      () => HiveService<AppProduct>(AppAssets.productsBox));
+    () => HiveService<AppProduct>(AppAssets.productsBox),
+  );
+  sl.registerLazySingleton<FirebaseAuthServices>(() => FirebaseAuthServices());
 
-  // DataSources
-  // Products
+  // Data Sources
+  // Products Data Sources
   sl.registerLazySingleton<ProductsRemoteDataSource>(
-    () => ProductsRemoteDataSourceDio(apiService: sl()),
+    () => ProductsRemoteDataSourceDio(apiService: sl<ApiService>()),
   );
   sl.registerLazySingleton<ProductsLocalDataSource>(
-    () => ProductsLocalDataSourceImpl(hiveService: sl()),
+    () =>
+        ProductsLocalDataSourceImpl(hiveService: sl<HiveService<AppProduct>>()),
   );
 
-  // Cart
+  // Cart Data Sources
   sl.registerLazySingleton<CartRemoteDataSource>(
-    () => CartRemoteDataSourceDio(apiService: sl()),
+    () => CartRemoteDataSourceDio(apiService: sl<ApiService>()),
   );
 
-  // Repository
-  sl.registerLazySingleton<ProductsRepostiory>(
+  // Auth Data Source
+  sl.registerLazySingleton<AuthRemoteDataSource>(
+    () => AuthRemoteDataSourceImpl(apiService: sl<ApiService>()),
+  );
+
+  // Repositories
+  // Products Repository
+  sl.registerLazySingleton<ProductsRepository>(
     () => ProductsRepositoryImpl(
-      productsRemoteDataSource: sl(),
-      productsLocalDataSource: sl(),
+      productsRemoteDataSource: sl<ProductsRemoteDataSource>(),
+      productsLocalDataSource: sl<ProductsLocalDataSource>(),
     ),
   );
 
+  // Cart Repository
   sl.registerLazySingleton<CartRepository>(
-    () => CartRepositoryImpl(
-      cartRemoteDataSource: sl(),
+    () => CartRepositoryImpl(cartRemoteDataSource: sl<CartRemoteDataSource>()),
+  );
+
+  // Auth Repository
+  sl.registerLazySingleton<AuthRepository>(
+    () => AuthRepositoryImpl(
+      authRemoteDataSource: sl<AuthRemoteDataSource>(),
+      firebaseAuthServices: sl<FirebaseAuthServices>(),
     ),
   );
 
-  // Usecases
-  // Products
-  sl.registerLazySingleton(() => GetHomeDataUseCase(repostiory: sl()));
-  sl.registerLazySingleton(
-      () => GetProductByCategorysUseCase(repostiory: sl()));
-  sl.registerLazySingleton(() => GetProductBySearchsUseCase(repostiory: sl()));
-  sl.registerLazySingleton(() => GetProductBySortUseCase(repostiory: sl()));
-  sl.registerLazySingleton(() => GetHomeProductsUseCase(repostiory: sl()));
-  sl.registerLazySingleton(() => AddFavoriteUseCase(repostiory: sl()));
-  sl.registerLazySingleton(() => RemoveFavoriteUseCase(repostiory: sl()));
-  sl.registerLazySingleton(() => GetFavoritesUseCase(repostiory: sl()));
+  // Use Cases
+  // Products Use Cases
+  sl.registerLazySingleton<GetHomeDataUseCase>(
+    () => GetHomeDataUseCase(repostiory: sl<ProductsRepository>()),
+  );
+  sl.registerLazySingleton<GetProductByCategorysUseCase>(
+    () => GetProductByCategorysUseCase(repostiory: sl<ProductsRepository>()),
+  );
+  sl.registerLazySingleton<GetProductBySearchsUseCase>(
+    () => GetProductBySearchsUseCase(repostiory: sl<ProductsRepository>()),
+  );
+  sl.registerLazySingleton<GetProductBySortUseCase>(
+    () => GetProductBySortUseCase(repostiory: sl<ProductsRepository>()),
+  );
+  sl.registerLazySingleton<GetHomeProductsUseCase>(
+    () => GetHomeProductsUseCase(repostiory: sl<ProductsRepository>()),
+  );
+  sl.registerLazySingleton<AddFavoriteUseCase>(
+    () => AddFavoriteUseCase(repostiory: sl<ProductsRepository>()),
+  );
+  sl.registerLazySingleton<RemoveFavoriteUseCase>(
+    () => RemoveFavoriteUseCase(repostiory: sl<ProductsRepository>()),
+  );
+  sl.registerLazySingleton<GetFavoritesUseCase>(
+    () => GetFavoritesUseCase(repostiory: sl<ProductsRepository>()),
+  );
 
-  // Cart
-  sl.registerLazySingleton(() => GetCartByUserUseCase(sl()));
-  sl.registerLazySingleton(() => AddProductToCartUseCase(sl()));
-  sl.registerLazySingleton(() => UpdateCartUseCase(sl()));
+  // Cart Use Cases
+  sl.registerLazySingleton<GetCartByUserUseCase>(
+    () => GetCartByUserUseCase(sl<CartRepository>()),
+  );
+  sl.registerLazySingleton<AddProductToCartUseCase>(
+    () => AddProductToCartUseCase(sl<CartRepository>()),
+  );
+  sl.registerLazySingleton<UpdateCartUseCase>(
+    () => UpdateCartUseCase(sl<CartRepository>()),
+  );
 
-  // Bloc
-  sl.registerFactory(() => HomeBloc(
-        getHomeDataUseCase: sl(),
-        getProductByCategorysUseCase: sl(),
-        getProductBySearchsUseCase: sl(),
-        getProductBySortUseCase: sl(),
-        getHomeProductsUseCase: sl(),
+  // Auth Use Cases
+  sl.registerLazySingleton<LoginUserUseCase>(
+    () => LoginUserUseCase(authRepository: sl<AuthRepository>()),
+  );
+  sl.registerLazySingleton<LoginWithGoogleUseCase>(
+    () => LoginWithGoogleUseCase(sl<AuthRepository>()),
+  );
+  sl.registerLazySingleton<LoginWithFacebookUseCase>(
+    () => LoginWithFacebookUseCase(sl<AuthRepository>()),
+  );
+
+  // Blocs
+  // Home Bloc
+  sl.registerFactory<BottomNavCubit>(() => BottomNavCubit());
+
+  sl.registerFactory<HomeBloc>(() => HomeBloc(
+        getHomeDataUseCase: sl<GetHomeDataUseCase>(),
+        getProductByCategorysUseCase: sl<GetProductByCategorysUseCase>(),
+        getProductBySearchsUseCase: sl<GetProductBySearchsUseCase>(),
+        getProductBySortUseCase: sl<GetProductBySortUseCase>(),
+        getHomeProductsUseCase: sl<GetHomeProductsUseCase>(),
       ));
 
-  sl.registerFactory(() => FavoritesBloc(
-        addFavoriteUseCase: sl(),
-        removeFavoriteUseCase: sl(),
-        getFavoritesUseCase: sl(),
+  // Favorites Bloc
+  sl.registerLazySingleton<FavoritesBloc>(() => FavoritesBloc(
+        addFavoriteUseCase: sl<AddFavoriteUseCase>(),
+        removeFavoriteUseCase: sl<RemoveFavoriteUseCase>(),
+        getFavoritesUseCase: sl<GetFavoritesUseCase>(),
       ));
 
-  sl.registerFactory(() => CartBloc(
-        getCartByUserUseCase: sl(),
-        addProductToCartUseCase: sl(),
-        updateCartUseCase: sl(),
+  // Cart Bloc
+  sl.registerLazySingleton<CartBloc>(() => CartBloc(
+        getCartByUserUseCase: sl<GetCartByUserUseCase>(),
+        addProductToCartUseCase: sl<AddProductToCartUseCase>(),
+        updateCartUseCase: sl<UpdateCartUseCase>(),
+      ));
+
+  // Login Bloc
+  sl.registerFactory<LoginBloc>(() => LoginBloc(
+        loginUserUseCase: sl<LoginUserUseCase>(),
+        loginWithGoogleUseCase: sl<LoginWithGoogleUseCase>(),
+        loginWithFacebookUseCase: sl<LoginWithFacebookUseCase>(),
       ));
 }

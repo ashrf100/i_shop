@@ -74,14 +74,6 @@ class _ImageContainer extends StatelessWidget {
           image: imageProvider,
           fit: BoxFit.cover,
         ),
-        boxShadow: const [
-          BoxShadow(
-            color: AppColors.boxShadowColor,
-            offset: Offset(0, 3),
-            blurRadius: 1,
-            spreadRadius: 0.5,
-          ),
-        ],
       ),
     );
   }

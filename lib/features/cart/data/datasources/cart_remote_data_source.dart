@@ -40,21 +40,13 @@ class CartRemoteDataSourceDio implements CartRemoteDataSource {
   Future<CartModel> updateCart(
       int cartId, UpdateCartRequestModel requestModel) async {
     try {
-      print('Initiating API call to update cart with ID $cartId...');
-
-      // Log the request model details for debugging
-      print('Request model: ${requestModel.toJson()}');
-
       final response = await apiService.updateCart(
         cartId: cartId,
         request: requestModel,
       );
 
-      print('API response received: ${response.toString()}');
-
       return response;
     } catch (e) {
-      print('Exception occurred: ${e.toString()}');
       ErrorHandler.handleError(e);
       rethrow;
     }

@@ -75,6 +75,8 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         },
         (cart) async {
           emit(CartState.loaded(cart));
+
+    
         },
       );
     });

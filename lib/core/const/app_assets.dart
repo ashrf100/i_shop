@@ -4,10 +4,10 @@ class AppAssets {
   static const String favoriteImage = "images/favorite.png";
   static const String logoImage = "images/logo.png";
 
-  static const String google = "images/google.json";
+  static const String google = "images/google1.png";
 
-  static const String facebook = "images/facebook.json";
-  static const String apple = "images/apple.json";
+  static const String facebook = "images/facebook1.png";
+  static const String apple = "images/apple.png";
 
   // Path to Lottie animation assets
   static const String errorLottie = "images/GzcCWUwuvh.json";

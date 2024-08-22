@@ -7,7 +7,7 @@ import 'package:i_shop/features/products/domain/entities/app_product.dart';
 import 'package:i_shop/features/products/domain/repositories/products_repository.dart';
 
 class GetHomeDataUseCase {
-  final ProductsRepostiory repostiory;
+  final ProductsRepository repostiory;
 
   GetHomeDataUseCase({required this.repostiory});
 
@@ -18,7 +18,7 @@ class GetHomeDataUseCase {
 }
 
 class GetHomeProductsUseCase {
-  final ProductsRepostiory repostiory;
+  final ProductsRepository repostiory;
 
   GetHomeProductsUseCase({required this.repostiory});
 
@@ -29,7 +29,7 @@ class GetHomeProductsUseCase {
 }
 
 class GetProductByCategorysUseCase {
-  final ProductsRepostiory repostiory;
+  final ProductsRepository repostiory;
 
   GetProductByCategorysUseCase({required this.repostiory});
 
@@ -47,7 +47,7 @@ class GetProductByCategorysUseCase {
 }
 
 class GetProductBySearchsUseCase {
-  final ProductsRepostiory repostiory;
+  final ProductsRepository repostiory;
 
   GetProductBySearchsUseCase({required this.repostiory});
 
@@ -61,7 +61,7 @@ class GetProductBySearchsUseCase {
 }
 
 class GetProductBySortUseCase {
-  final ProductsRepostiory repostiory;
+  final ProductsRepository repostiory;
 
   GetProductBySortUseCase({required this.repostiory});
 

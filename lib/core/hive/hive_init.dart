@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:i_shop/core/const/app_assets.dart';
 import 'package:i_shop/features/products/data/models/products_model.dart';
@@ -6,7 +5,8 @@ import 'package:i_shop/features/products/domain/entities/app_product.dart';
 import 'package:path_provider/path_provider.dart';
 
 Future<void> initializeHive() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  // add to the main
+  //  WidgetsFlutterBinding.ensureInitialized();
 
   try {
     final appDocumentDir = await getApplicationDocumentsDirectory();
