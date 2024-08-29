@@ -72,7 +72,7 @@ class _ImageContainer extends StatelessWidget {
         borderRadius: BorderRadius.circular(borderRadius.r),
         image: DecorationImage(
           image: imageProvider,
-          fit: BoxFit.cover,
+          fit: BoxFit.contain,
         ),
       ),
     );

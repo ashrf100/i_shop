@@ -134,7 +134,7 @@ Future<void> init() async {
 
   // Blocs
   // Home Bloc
-  sl.registerFactory<BottomNavCubit>(() => BottomNavCubit());
+  sl.registerLazySingleton<BottomNavCubit>(() => BottomNavCubit());
 
   sl.registerFactory<HomeBloc>(() => HomeBloc(
         getHomeDataUseCase: sl<GetHomeDataUseCase>(),
@@ -159,7 +159,7 @@ Future<void> init() async {
       ));
 
   // Login Bloc
-  sl.registerFactory<LoginBloc>(() => LoginBloc(
+  sl.registerLazySingleton<LoginBloc>(() => LoginBloc(
         loginUserUseCase: sl<LoginUserUseCase>(),
         loginWithGoogleUseCase: sl<LoginWithGoogleUseCase>(),
         loginWithFacebookUseCase: sl<LoginWithFacebookUseCase>(),

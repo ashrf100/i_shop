@@ -5,6 +5,7 @@ import 'package:i_shop/core/const/app_colors.dart';
 import 'package:i_shop/core/widgets/spacer_widget.dart';
 import 'package:i_shop/features/products/presentation/bloc/Favorite/favorite_bloc.dart';
 import 'package:i_shop/features/products/presentation/bloc/Favorite/favorite_event.dart';
+import 'package:i_shop/features/products/presentation/bloc/Favorite/favorite_state.dart';
 import 'package:i_shop/features/products/presentation/pages/home_page.dart';
 import 'package:i_shop/features/products/presentation/widgets/favorite/favorites_body.dart';
 import 'package:i_shop/features/products/presentation/widgets/favorite/favorites_header.dart';
@@ -61,27 +62,31 @@ class _FavoritesPageState extends State<FavoritesPage> {
     return BlocProvider(
       create: (context) =>
           di.sl<FavoritesBloc>()..add(const FavoritesEvent.loadFavorites()),
-      child: Scaffold(
-        backgroundColor: AppColors.white,
-        body: Stack(
-          children: [
-            Column(
+      child: BlocBuilder<FavoritesBloc, FavoritesState>(
+        builder: (context, state) {
+          return Scaffold(
+            backgroundColor: AppColors.white,
+            body: Stack(
               children: [
-                SpacerWidget.vertical(height: 5.h),
-                const FavoritesHeader(),
-                SpacerWidget.vertical(height: 15.h),
-                Expanded(
-                  child: FavoritesBody(
-                    scrollController: _scrollController,
-                    showLoadingDialog: _showLoadingDialog,
-                    hideLoadingDialog: _hideLoadingDialog,
-                  ),
+                Column(
+                  children: [
+                    SpacerWidget.vertical(height: 5.h),
+                    const FavoritesHeader(),
+                    SpacerWidget.vertical(height: 15.h),
+                    Expanded(
+                      child: FavoritesBody(
+                        scrollController: _scrollController,
+                        showLoadingDialog: _showLoadingDialog,
+                        hideLoadingDialog: _hideLoadingDialog,
+                      ),
+                    ),
+                  ],
                 ),
+                buildBackGround(),
               ],
             ),
-            buildBackGround(),
-          ],
-        ),
+          );
+        },
       ),
     );
   }

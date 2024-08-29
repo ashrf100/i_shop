@@ -7,11 +7,11 @@ import 'package:i_shop/core/const/app_text_styles.dart';
 import 'package:i_shop/core/widgets/app_animations.dart';
 import 'package:i_shop/features/auth/presentation/widgets/login_form_widget.dart';
 import 'package:i_shop/features/auth/presentation/widgets/social_button.dart';
-import 'package:i_shop/features/products/presentation/widgets/homewidgets/products/loading_dialog.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:i_shop/features/auth/presentation/bloc/login_bloc.dart';
 import 'package:i_shop/features/auth/presentation/bloc/login_event.dart';
 import 'package:i_shop/features/auth/presentation/bloc/login_state.dart';
+import 'package:i_shop/injection_container.dart' as di;
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -38,55 +38,58 @@ class _WelcomePageState extends State<WelcomePage>
     return Scaffold(
       backgroundColor: AppColors.white,
       body: SafeArea(
-        child: BlocBuilder<LoginBloc, LoginState>(
-          builder: (context, state) {
-            final isLoading = state is LoginLoading;
-            return SingleChildScrollView(
-              child: FadeAnimationWidget(
-                controller: _animationController,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24.w),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      _LoginLogoWidget(
-                          animationController: _animationController),
-                      _LoginWelcomeWidget(
-                          animationController: _animationController),
-                      SizedBox(height: 20.h),
-                      LoginFormWidget(
-                          animationController: _animationController),
-                      SizedBox(height: 10.h),
-                      const LoginDivederWidget(),
-                      SizedBox(height: 10.h),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          SocialButton(
-                            icon: AppAssets.google,
-                            label: 'Google',
-                            onTap: isLoading
-                                ? () {}
-                                : () => _signInWithGoogle(context),
-                          ),
-                          SizedBox(height: 40.h),
-                          SocialButton(
-                            icon: AppAssets.facebook,
-                            label: 'Facebook',
-                            onTap: isLoading
-                                ? () {}
-                                : () => _signInWithFacebook(context),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 20.h),
-                    ],
+        child: BlocProvider(
+          create: (context) => di.sl<LoginBloc>(),
+          child: BlocBuilder<LoginBloc, LoginState>(
+            builder: (context, state) {
+              final isLoading = state is LoginLoading;
+              return SingleChildScrollView(
+                child: FadeAnimationWidget(
+                  controller: _animationController,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 24.w),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        _LoginLogoWidget(
+                            animationController: _animationController),
+                        _LoginWelcomeWidget(
+                            animationController: _animationController),
+                        SizedBox(height: 20.h),
+                        LoginFormWidget(
+                            animationController: _animationController),
+                        SizedBox(height: 10.h),
+                        const LoginDivederWidget(),
+                        SizedBox(height: 10.h),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            SocialButton(
+                              icon: AppAssets.google,
+                              label: 'Google',
+                              onTap: isLoading
+                                  ? () {}
+                                  : () => _signInWithGoogle(context),
+                            ),
+                            SizedBox(height: 40.h),
+                            SocialButton(
+                              icon: AppAssets.facebook,
+                              label: 'Facebook',
+                              onTap: isLoading
+                                  ? () {}
+                                  : () => _signInWithFacebook(context),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 20.h),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );
@@ -100,13 +103,6 @@ class _WelcomePageState extends State<WelcomePage>
     context.read<LoginBloc>().add(const FacebookLoginRequested());
   }
 
-  void _showLoadingDialog() {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) => const LoadingDialog(),
-    );
-  }
 }
 
 class LoginDivederWidget extends StatelessWidget {

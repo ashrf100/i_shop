@@ -77,14 +77,11 @@ class _ProductsGridState extends State<ProductsGrid> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       controller: _scrollController,
-      child: BlocProvider(
-        create: (context) => di.sl<FavoritesBloc>(),
-        child: Column(
-          children: [
-            _ProductGridView(products: widget.products),
-            _NoMoreProductsMessage(),
-          ],
-        ),
+      child: Column(
+        children: [
+          _ProductGridView(products: widget.products),
+          _NoMoreProductsMessage(),
+        ],
       ),
     );
   }

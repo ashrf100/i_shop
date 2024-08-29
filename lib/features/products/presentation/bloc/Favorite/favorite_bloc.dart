@@ -1,4 +1,3 @@
-
 import 'package:bloc/bloc.dart';
 import 'package:i_shop/features/products/domain/usecase/favorite_use_case.dart';
 import 'package:i_shop/features/products/presentation/bloc/Favorite/favorite_event.dart';
@@ -57,7 +56,6 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
 
     on<LoadFavoritesEvent>((event, emit) async {
       emit(const FavoritesState.loading());
-      await Future.delayed(Duration(seconds: 1));
       final result = await getFavoritesUseCase.call();
 
       result.fold(

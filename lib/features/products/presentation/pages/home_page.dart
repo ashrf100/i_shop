@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:i_shop/core/const/app_colors.dart';
 import 'package:i_shop/core/widgets/spacer_widget.dart';
+import 'package:i_shop/features/products/presentation/bloc/Favorite/favorite_bloc.dart';
+import 'package:i_shop/features/products/presentation/bloc/Favorite/favorite_event.dart';
 import 'package:i_shop/features/products/presentation/bloc/home/home_bloc.dart';
 import 'package:i_shop/features/products/presentation/bloc/home/home_event.dart';
 import 'package:i_shop/features/products/presentation/widgets/homewidgets/categories/home_categories_list.dart';
@@ -16,8 +18,15 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => di.sl<HomeBloc>()..add(const HomeEvent.init()),
+    return MultiBlocProvider( 
+      providers: [
+        BlocProvider(
+          create: (context) => di.sl<HomeBloc>()..add(const HomeEvent.init()),
+        ),
+        BlocProvider(
+          create: (context) => di.sl<FavoritesBloc>(),
+        )
+      ],
       child: Scaffold(
           body: SafeArea(
               child: Container(

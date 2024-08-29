@@ -13,4 +13,4 @@ Future<void> main() async {
   await initializeHive();
   configureSystemUI();
   runApp(const IShop());
-}
+}   
