@@ -15,7 +15,6 @@ class AppTextStyles {
     color: AppColors.darkGray,
     fontSize: 16.sp,
     fontWeight: FontWeight.bold,
-    height: 1.5.h,
   );
 
   // Body text styles

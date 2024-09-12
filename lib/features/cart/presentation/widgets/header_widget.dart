@@ -9,14 +9,16 @@ class HeaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.0.w, vertical: 16.w),
+      padding: EdgeInsets.symmetric(horizontal: 32.0.w, vertical: 8.w),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           _buildIconButton(
             icon: Icons.arrow_back_ios_new,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
           ),
           Text(
             'Checkout',
@@ -36,7 +38,7 @@ class HeaderWidget extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        padding: EdgeInsets.all(8.w),
+        padding: EdgeInsets.all(6.w),
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: AppColors.lightGray.withOpacity(0.2),

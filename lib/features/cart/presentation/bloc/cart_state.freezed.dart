@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CartState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function() loading,
     required TResult Function(AppCart cart) loaded,
     required TResult Function(String message) error,
@@ -25,6 +26,7 @@ mixin _$CartState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function()? loading,
     TResult? Function(AppCart cart)? loaded,
     TResult? Function(String message)? error,
@@ -32,6 +34,7 @@ mixin _$CartState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function()? loading,
     TResult Function(AppCart cart)? loaded,
     TResult Function(String message)? error,
@@ -40,6 +43,7 @@ mixin _$CartState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(CartInitState value) init,
     required TResult Function(CartLoadingState value) loading,
     required TResult Function(CartLoadedState value) loaded,
     required TResult Function(CartErrorState value) error,
@@ -47,6 +51,7 @@ mixin _$CartState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CartInitState value)? init,
     TResult? Function(CartLoadingState value)? loading,
     TResult? Function(CartLoadedState value)? loaded,
     TResult? Function(CartErrorState value)? error,
@@ -54,6 +59,7 @@ mixin _$CartState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(CartInitState value)? init,
     TResult Function(CartLoadingState value)? loading,
     TResult Function(CartLoadedState value)? loaded,
     TResult Function(CartErrorState value)? error,
@@ -77,6 +83,120 @@ class _$CartStateCopyWithImpl<$Res, $Val extends CartState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$CartInitStateImplCopyWith<$Res> {
+  factory _$$CartInitStateImplCopyWith(
+          _$CartInitStateImpl value, $Res Function(_$CartInitStateImpl) then) =
+      __$$CartInitStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CartInitStateImplCopyWithImpl<$Res>
+    extends _$CartStateCopyWithImpl<$Res, _$CartInitStateImpl>
+    implements _$$CartInitStateImplCopyWith<$Res> {
+  __$$CartInitStateImplCopyWithImpl(
+      _$CartInitStateImpl _value, $Res Function(_$CartInitStateImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$CartInitStateImpl implements CartInitState {
+  const _$CartInitStateImpl();
+
+  @override
+  String toString() {
+    return 'CartState.init()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$CartInitStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() loading,
+    required TResult Function(AppCart cart) loaded,
+    required TResult Function(String message) error,
+  }) {
+    return init();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? loading,
+    TResult? Function(AppCart cart)? loaded,
+    TResult? Function(String message)? error,
+  }) {
+    return init?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? loading,
+    TResult Function(AppCart cart)? loaded,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (init != null) {
+      return init();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CartInitState value) init,
+    required TResult Function(CartLoadingState value) loading,
+    required TResult Function(CartLoadedState value) loaded,
+    required TResult Function(CartErrorState value) error,
+  }) {
+    return init(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CartInitState value)? init,
+    TResult? Function(CartLoadingState value)? loading,
+    TResult? Function(CartLoadedState value)? loaded,
+    TResult? Function(CartErrorState value)? error,
+  }) {
+    return init?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CartInitState value)? init,
+    TResult Function(CartLoadingState value)? loading,
+    TResult Function(CartLoadedState value)? loaded,
+    TResult Function(CartErrorState value)? error,
+    required TResult orElse(),
+  }) {
+    if (init != null) {
+      return init(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CartInitState implements CartState {
+  const factory CartInitState() = _$CartInitStateImpl;
 }
 
 /// @nodoc
@@ -117,6 +237,7 @@ class _$CartLoadingStateImpl implements CartLoadingState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function() loading,
     required TResult Function(AppCart cart) loaded,
     required TResult Function(String message) error,
@@ -127,6 +248,7 @@ class _$CartLoadingStateImpl implements CartLoadingState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function()? loading,
     TResult? Function(AppCart cart)? loaded,
     TResult? Function(String message)? error,
@@ -137,6 +259,7 @@ class _$CartLoadingStateImpl implements CartLoadingState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function()? loading,
     TResult Function(AppCart cart)? loaded,
     TResult Function(String message)? error,
@@ -151,6 +274,7 @@ class _$CartLoadingStateImpl implements CartLoadingState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(CartInitState value) init,
     required TResult Function(CartLoadingState value) loading,
     required TResult Function(CartLoadedState value) loaded,
     required TResult Function(CartErrorState value) error,
@@ -161,6 +285,7 @@ class _$CartLoadingStateImpl implements CartLoadingState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CartInitState value)? init,
     TResult? Function(CartLoadingState value)? loading,
     TResult? Function(CartLoadedState value)? loaded,
     TResult? Function(CartErrorState value)? error,
@@ -171,6 +296,7 @@ class _$CartLoadingStateImpl implements CartLoadingState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(CartInitState value)? init,
     TResult Function(CartLoadingState value)? loading,
     TResult Function(CartLoadedState value)? loaded,
     TResult Function(CartErrorState value)? error,
@@ -252,6 +378,7 @@ class _$CartLoadedStateImpl implements CartLoadedState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function() loading,
     required TResult Function(AppCart cart) loaded,
     required TResult Function(String message) error,
@@ -262,6 +389,7 @@ class _$CartLoadedStateImpl implements CartLoadedState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function()? loading,
     TResult? Function(AppCart cart)? loaded,
     TResult? Function(String message)? error,
@@ -272,6 +400,7 @@ class _$CartLoadedStateImpl implements CartLoadedState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function()? loading,
     TResult Function(AppCart cart)? loaded,
     TResult Function(String message)? error,
@@ -286,6 +415,7 @@ class _$CartLoadedStateImpl implements CartLoadedState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(CartInitState value) init,
     required TResult Function(CartLoadingState value) loading,
     required TResult Function(CartLoadedState value) loaded,
     required TResult Function(CartErrorState value) error,
@@ -296,6 +426,7 @@ class _$CartLoadedStateImpl implements CartLoadedState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CartInitState value)? init,
     TResult? Function(CartLoadingState value)? loading,
     TResult? Function(CartLoadedState value)? loaded,
     TResult? Function(CartErrorState value)? error,
@@ -306,6 +437,7 @@ class _$CartLoadedStateImpl implements CartLoadedState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(CartInitState value)? init,
     TResult Function(CartLoadingState value)? loading,
     TResult Function(CartLoadedState value)? loaded,
     TResult Function(CartErrorState value)? error,
@@ -392,6 +524,7 @@ class _$CartErrorStateImpl implements CartErrorState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function() loading,
     required TResult Function(AppCart cart) loaded,
     required TResult Function(String message) error,
@@ -402,6 +535,7 @@ class _$CartErrorStateImpl implements CartErrorState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function()? loading,
     TResult? Function(AppCart cart)? loaded,
     TResult? Function(String message)? error,
@@ -412,6 +546,7 @@ class _$CartErrorStateImpl implements CartErrorState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function()? loading,
     TResult Function(AppCart cart)? loaded,
     TResult Function(String message)? error,
@@ -426,6 +561,7 @@ class _$CartErrorStateImpl implements CartErrorState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(CartInitState value) init,
     required TResult Function(CartLoadingState value) loading,
     required TResult Function(CartLoadedState value) loaded,
     required TResult Function(CartErrorState value) error,
@@ -436,6 +572,7 @@ class _$CartErrorStateImpl implements CartErrorState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CartInitState value)? init,
     TResult? Function(CartLoadingState value)? loading,
     TResult? Function(CartLoadedState value)? loaded,
     TResult? Function(CartErrorState value)? error,
@@ -446,6 +583,7 @@ class _$CartErrorStateImpl implements CartErrorState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(CartInitState value)? init,
     TResult Function(CartLoadingState value)? loading,
     TResult Function(CartLoadedState value)? loaded,
     TResult Function(CartErrorState value)? error,

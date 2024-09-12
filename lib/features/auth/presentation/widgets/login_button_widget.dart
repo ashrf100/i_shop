@@ -25,7 +25,7 @@ class LoginButtonWidget extends StatelessWidget {
     return BlocBuilder<LoginBloc, LoginState>(
       builder: (context, state) {
         final isLoading = state is LoginLoading;
-        final isEnabled = !(state is LoginLoading || state is LoginSuccess);
+        final isEnabled = !(state is LoginLoading);
 
         return ButtonAnimationWidget(
           onTap: isEnabled ? onTap : () {},

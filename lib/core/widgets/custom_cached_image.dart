@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,13 +11,15 @@ class CustomCachedImage extends StatefulWidget {
   final String imageUrl;
   final double height;
   final double borderRadius;
+  final Color? color;
 
   const CustomCachedImage({
-    super.key,
+    Key? key,
     required this.imageUrl,
     this.height = 200.0,
     this.borderRadius = 10.0,
-  });
+    this.color,
+  }) : super(key: key);
 
   @override
   State<CustomCachedImage> createState() => _CustomCachedImageState();
@@ -34,6 +37,7 @@ class _CustomCachedImageState extends State<CustomCachedImage> {
       key: imageKey,
       imageUrl: widget.imageUrl,
       imageBuilder: (context, imageProvider) => _ImageContainer(
+        color: widget.color,
         imageProvider: imageProvider,
         height: widget.height,
         borderRadius: widget.borderRadius,
@@ -57,11 +61,13 @@ class _ImageContainer extends StatelessWidget {
   final ImageProvider imageProvider;
   final double height;
   final double borderRadius;
+  final Color? color;
 
   const _ImageContainer({
     required this.imageProvider,
     required this.height,
     required this.borderRadius,
+    this.color,
   });
 
   @override
@@ -69,6 +75,7 @@ class _ImageContainer extends StatelessWidget {
     return Container(
       height: height,
       decoration: BoxDecoration(
+        color: color,
         borderRadius: BorderRadius.circular(borderRadius.r),
         image: DecorationImage(
           image: imageProvider,

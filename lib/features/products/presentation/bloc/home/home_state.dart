@@ -14,14 +14,12 @@ class HomeState with _$HomeState {
       required List<AppCategory> categories}) = InitHomeState;
 
   const factory HomeState.productsLoading() = ProductsLoadingState;
-  const factory HomeState.products(List<AppProduct> products) = ProductsState;
+  const factory HomeState.products(
+      List<AppProduct> products, List<AppCategory> categories) = ProductsState;
   const factory HomeState.productsError(
       {required String msg,
       AppCategory? category,
       String? searchText,
       SortBy? sortBy,
       Sortorder? order}) = ProductsErrorState;
-
-
-  
 }

@@ -6,8 +6,10 @@ import 'package:i_shop/core/network/api_service.dart';
 import 'package:i_shop/core/network/dio_factory.dart';
 import 'package:i_shop/core/hive/hive_service.dart';
 import 'package:i_shop/core/widgets/bottom_nav_bar/cubit/bottom_nav_cubit_cubit.dart';
+import 'package:i_shop/features/auth/data/datasources/auth_local_data_source.dart';
 import 'package:i_shop/features/auth/data/datasources/auth_remote_data_source.dart';
 import 'package:i_shop/features/auth/data/repositories/auth_repository_imp.dart';
+import 'package:i_shop/features/auth/domain/entities/app_user.dart';
 import 'package:i_shop/features/auth/domain/repositories/auth_repository.dart';
 import 'package:i_shop/features/auth/domain/usecase/auth_usecase.dart';
 import 'package:i_shop/features/auth/presentation/bloc/login_bloc.dart';
@@ -28,8 +30,6 @@ import 'package:i_shop/features/cart/presentation/bloc/cart_bloc.dart';
 
 final sl = GetIt.instance;
 
-/// Registers all dependencies with the [GetIt] instance.
-/// This function is usually called at app startup.
 Future<void> init() async {
   // External
   final Dio dio = DioFactory.getDio();
@@ -39,6 +39,10 @@ Future<void> init() async {
   sl.registerLazySingleton<HiveService<AppProduct>>(
     () => HiveService<AppProduct>(AppAssets.productsBox),
   );
+  sl.registerLazySingleton<HiveService<AppUser>>(
+    () => HiveService<AppUser>(AppAssets.userBox),
+  );
+
   sl.registerLazySingleton<FirebaseAuthServices>(() => FirebaseAuthServices());
 
   // Data Sources
@@ -60,6 +64,8 @@ Future<void> init() async {
   sl.registerLazySingleton<AuthRemoteDataSource>(
     () => AuthRemoteDataSourceImpl(apiService: sl<ApiService>()),
   );
+  sl.registerLazySingleton<AuthLocalDataSource>(
+      () => AuthLocalDataSourceImpl(hiveService: sl<HiveService<AppUser>>()));
 
   // Repositories
   // Products Repository
@@ -80,6 +86,7 @@ Future<void> init() async {
     () => AuthRepositoryImpl(
       authRemoteDataSource: sl<AuthRemoteDataSource>(),
       firebaseAuthServices: sl<FirebaseAuthServices>(),
+      authLocalDataSource: sl<AuthLocalDataSource>(),
     ),
   );
 
@@ -131,10 +138,13 @@ Future<void> init() async {
   sl.registerLazySingleton<LoginWithFacebookUseCase>(
     () => LoginWithFacebookUseCase(sl<AuthRepository>()),
   );
+  sl.registerLazySingleton<GetUserUseCase>(
+    () => GetUserUseCase(sl<AuthRepository>()),
+  );
 
   // Blocs
   // Home Bloc
-  sl.registerLazySingleton<BottomNavCubit>(() => BottomNavCubit());
+  sl.registerFactory<BottomNavCubit>(() => BottomNavCubit());
 
   sl.registerFactory<HomeBloc>(() => HomeBloc(
         getHomeDataUseCase: sl<GetHomeDataUseCase>(),
@@ -145,23 +155,24 @@ Future<void> init() async {
       ));
 
   // Favorites Bloc
-  sl.registerLazySingleton<FavoritesBloc>(() => FavoritesBloc(
+  sl.registerFactory<FavoritesBloc>(() => FavoritesBloc(
         addFavoriteUseCase: sl<AddFavoriteUseCase>(),
         removeFavoriteUseCase: sl<RemoveFavoriteUseCase>(),
         getFavoritesUseCase: sl<GetFavoritesUseCase>(),
       ));
 
   // Cart Bloc
-  sl.registerLazySingleton<CartBloc>(() => CartBloc(
+  sl.registerFactory<CartBloc>(() => CartBloc(
         getCartByUserUseCase: sl<GetCartByUserUseCase>(),
         addProductToCartUseCase: sl<AddProductToCartUseCase>(),
         updateCartUseCase: sl<UpdateCartUseCase>(),
       ));
 
   // Login Bloc
-  sl.registerLazySingleton<LoginBloc>(() => LoginBloc(
+  sl.registerFactory<LoginBloc>(() => LoginBloc(
         loginUserUseCase: sl<LoginUserUseCase>(),
         loginWithGoogleUseCase: sl<LoginWithGoogleUseCase>(),
         loginWithFacebookUseCase: sl<LoginWithFacebookUseCase>(),
+        getUserUseCase: sl<GetUserUseCase>(),
       ));
 }

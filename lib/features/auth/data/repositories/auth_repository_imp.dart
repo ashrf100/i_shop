@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:i_shop/core/error/app_exception.dart';
 import 'package:i_shop/core/error/exceptions_errors.dart';
 import 'package:i_shop/core/firebase/firebase_auth_services.dart';
+import 'package:i_shop/features/auth/data/datasources/auth_local_data_source.dart';
 import 'package:i_shop/features/auth/data/datasources/auth_remote_data_source.dart';
 import 'package:i_shop/features/auth/data/model/login_request_model.dart';
 import 'package:i_shop/features/auth/domain/entities/app_user.dart';
@@ -11,8 +12,10 @@ import 'package:i_shop/features/auth/domain/repositories/auth_repository.dart';
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource authRemoteDataSource;
   final FirebaseAuthServices firebaseAuthServices;
+  final AuthLocalDataSource authLocalDataSource;
 
   AuthRepositoryImpl({
+    required this.authLocalDataSource,
     required this.authRemoteDataSource,
     required this.firebaseAuthServices,
   });
@@ -34,7 +37,7 @@ class AuthRepositoryImpl implements AuthRepository {
           name: "${loginResponse.firstName} ${loginResponse.lastName} ",
           email: loginResponse.email,
           image: loginResponse.image);
-
+      await authLocalDataSource.addUser(appUser);
       return Right(appUser);
     } on AppException catch (e) {
       return Left(e);
@@ -58,6 +61,8 @@ class AuthRepositoryImpl implements AuthRepository {
           email: user.email!,
           image: user.photoURL!,
         );
+        await authLocalDataSource.addUser(appUser);
+
         return Right(appUser);
       } else {
         return Left(AppException.unauthorized());
@@ -65,10 +70,6 @@ class AuthRepositoryImpl implements AuthRepository {
     } on FirebaseAuthException catch (e) {
       return Left(AppException.googleAuth(e.message ?? " "));
     } catch (e) {
-      print("////////////////////////////////////////////");
-      print(e);
-      print("////////////////////////////////////////////");
-
       return Left(AppException.unknown());
     }
   }
@@ -84,6 +85,8 @@ class AuthRepositoryImpl implements AuthRepository {
           email: user.email ?? '',
           image: user.photoURL ?? '',
         );
+        await authLocalDataSource.addUser(appUser);
+
         return Right(appUser);
       } else {
         return Left(AppException.unauthorized());
@@ -92,6 +95,20 @@ class AuthRepositoryImpl implements AuthRepository {
       return Left(AppException.facebookAuth(e.message ?? " "));
     } catch (e) {
       return Left(AppException.unknown());
+    }
+  }
+
+  @override
+  Future<Either<AppException, AppUser>> getUser() async {
+    try {
+      final user = await authLocalDataSource.getUser();
+      if (user != null) {
+        return Right(user);
+      } else {
+        return Left(AppException.hiveDataNotFound());
+      }
+    } on AppException catch (e) {
+      return Left(e);
     }
   }
 }

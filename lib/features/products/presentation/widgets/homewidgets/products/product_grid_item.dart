@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:i_shop/core/const/app_colors.dart';
 import 'package:i_shop/core/const/app_text_styles.dart';
 import 'package:i_shop/core/widgets/custom_cached_image.dart';
 import 'package:i_shop/core/widgets/spacer_widget.dart';
 import 'package:i_shop/features/products/domain/entities/app_product.dart';
 import 'package:i_shop/features/products/presentation/widgets/favorite_circle_avatar.dart';
 
-class ProductGridItem extends StatelessWidget {
+import '../../../../../../core/widgets/app_animations.dart';
+
+class ProductGridItem extends StatefulWidget {
   const ProductGridItem({
     super.key,
     required this.product,
@@ -19,19 +22,52 @@ class ProductGridItem extends StatelessWidget {
   final void Function(AppProduct product) onTap;
 
   @override
+  _ProductGridItemState createState() => _ProductGridItemState();
+}
+
+class _ProductGridItemState extends State<ProductGridItem>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
       child: GestureDetector(
-        onTap: () => onTap(product),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            _ProductImage(
-              product: product,
-              index: index,
+        onTap: () => widget.onTap(widget.product),
+        child: SlideAnimationWidget(
+          controller: _controller,
+          beginOffset: const Offset(0, 0.3),
+          child: FadeAnimationWidget(
+            controller: _controller,
+            beginOpacity: 0.0,
+            endOpacity: 1.0,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                _ProductImage(
+                  product: widget.product,
+                  index: widget.index,
+                ),
+                _ProductDetails(product: widget.product),
+              ],
             ),
-            _ProductDetails(product: product),
-          ],
+          ),
         ),
       ),
     );
@@ -54,8 +90,10 @@ class _ProductImage extends StatelessWidget {
         SizedBox(
           height: index.isEven ? 250.h : 210.h,
           child: CustomCachedImage(
+            color: AppColors.lightGray.withOpacity(0.5),
             imageUrl: product.thumbnail,
             height: index.isEven ? 250.h : 210.h,
+            borderRadius: 15.r,
           ),
         ),
         Positioned(
@@ -82,6 +120,7 @@ class _ProductDetails extends StatelessWidget {
         children: [
           Text(
             product.title,
+            maxLines: 2,
             style: AppTextStyles.darkGray16Bold,
             overflow: TextOverflow.ellipsis,
           ),

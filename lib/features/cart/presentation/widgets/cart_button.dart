@@ -14,7 +14,7 @@ class CartButton extends StatelessWidget {
         onTap: () {},
         child: Container(
           width: 300.w,
-          height: 50.h,
+          height: 45.h,
           alignment: Alignment.center,
           decoration: BoxDecoration(
             color: AppColors.darkGray,

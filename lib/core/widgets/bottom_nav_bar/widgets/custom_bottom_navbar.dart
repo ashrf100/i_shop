@@ -8,47 +8,55 @@ import 'package:i_shop/core/widgets/bottom_nav_bar/cubit/bottom_nav_cubit_cubit.
 import 'package:badges/badges.dart' as badges;
 import 'package:i_shop/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:i_shop/features/cart/presentation/bloc/cart_state.dart';
+import 'package:i_shop/features/products/presentation/bloc/Favorite/favorite_bloc.dart';
+import 'package:i_shop/features/products/presentation/bloc/Favorite/favorite_state.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   const CustomBottomNavBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CartBloc, CartState>(
-      builder: (context, state) {
-        final cartCount = state.maybeWhen(
-          loaded: (cart) => cart.products.length,
-          orElse: () => 0,
-        );
-     
-        return Container(
-          width: 300.w,
-          height: 45.h,
-          padding: EdgeInsets.symmetric(horizontal: 8.w),
-          decoration: BoxDecoration(
-            color: AppColors.darkGray,
-            borderRadius: BorderRadius.circular(25.r),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              const _NavItem(
-                  icon: Icons.home_outlined, activeIcon: Icons.home, index: 0),
-              _NavItemWithBadge(
+    return Container(
+      width: 300.w,
+      height: 45.h,
+      padding: EdgeInsets.symmetric(horizontal: 8.w),
+      decoration: BoxDecoration(
+        color: AppColors.darkGray,
+        borderRadius: BorderRadius.circular(25.r),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          const _NavItem(
+              icon: Icons.home_outlined, activeIcon: Icons.home, index: 0),
+          BlocBuilder<FavoritesBloc, FavoritesState>(
+            builder: (context, state) {
+              final favoritesCount = state.maybeWhen(
+                loaded: (products) => products.length,
+                orElse: () => 0,
+              );
+              return _NavItemWithBadge(
                 icon: Icons.favorite_border,
                 activeIcon: Icons.favorite,
                 index: 1,
-                count: cartCount,
-              ),
-              _CartIconButton(count: cartCount),
-              const _NavItem(
-                  icon: Icons.person_outline,
-                  activeIcon: Icons.person,
-                  index: 3),
-            ],
+                count: favoritesCount,
+              );
+            },
           ),
-        );
-      },
+          BlocBuilder<CartBloc, CartState>(
+            builder: (context, state) {
+              final cartCount = state.maybeWhen(
+                loaded: (cart) => cart.products.length,
+                orElse: () => 0,
+              );
+
+              return _CartIconButton(count: cartCount);
+            },
+          ),
+          const _NavItem(
+              icon: Icons.person_outline, activeIcon: Icons.person, index: 3),
+        ],
+      ),
     );
   }
 }
@@ -113,9 +121,18 @@ class _NavItemWithBadge extends StatelessWidget {
     return badges.Badge(
       position: badges.BadgePosition.topEnd(top: -4.h, end: 1.w),
       showBadge: count > 0,
-      badgeContent: Padding(
-        padding: EdgeInsets.all(0.9.w),
-        child: Text(count.toString(), style: AppTextStyles.white10Regular),
+      badgeContent: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 300),
+        transitionBuilder: (Widget child, Animation<double> animation) {
+          final rotationAnimation =
+              Tween<double>(begin: 0, end: 1).animate(animation);
+          return RotationTransition(turns: rotationAnimation, child: child);
+        },
+        child: Padding(
+          key: ValueKey<int>(count),
+          padding: EdgeInsets.all(1.2.w),
+          child: Text(count.toString(), style: AppTextStyles.white10Regular),
+        ),
       ),
       badgeStyle: badges.BadgeStyle(
         shape: badges.BadgeShape.circle,

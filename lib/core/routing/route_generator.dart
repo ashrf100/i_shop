@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:i_shop/core/routing/app_routes.dart';
 import 'package:i_shop/core/widgets/bottom_nav_bar/widgets/bottom_nav_widget.dart';
-import 'package:i_shop/features/cart/presentation/bloc/cart_event.dart';
+import 'package:i_shop/features/auth/presentation/pages/login_page.dart';
 import 'package:i_shop/features/cart/presentation/pages/cart_page.dart';
 import 'package:i_shop/features/products/domain/entities/app_product.dart';
 import 'package:i_shop/features/products/presentation/pages/product_page.dart';
-
-import '../../features/cart/presentation/bloc/cart_bloc.dart';
-
-import 'package:i_shop/injection_container.dart' as di;
-
-import '../../features/products/presentation/bloc/Favorite/favorite_bloc.dart';
+import 'package:i_shop/ishop.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -19,33 +13,18 @@ class RouteGenerator {
 
     switch (settings.name) {
       case AppRoutes.main:
-        return FadePageRoute(page: const BottomNavBarWidget());
+        return FadePageRoute(page: BottomNavBarWidget());
+      case AppRoutes.login:
+        return FadePageRoute(page: const WelcomePage());
       case AppRoutes.productInfo:
         if (args is AppProduct) {
-          return MaterialPageRoute<void>(
-            builder: (_) => MultiBlocProvider(
-              providers: [
-                BlocProvider.value(
-                  value: di.sl<CartBloc>(),
-                ),
-                BlocProvider.value(
-                  value: di.sl<FavoritesBloc>(),
-                ),
-              ],
-              child: ProductPage(product: args),
-            ),
+          return SlideFromBottomPageRoute(
+            page: ProductPage(product: args),
           );
         }
         return _errorRoute();
-
       case AppRoutes.cart:
-        return MaterialPageRoute<void>(
-          builder: (_) => BlocProvider.value(
-            value: di.sl<CartBloc>(),
-            child: const CartPage(),
-          ),
-        );
-
+        return SlideFromBottomPageRoute(page: const CartPage());
       default:
         return _errorRoute();
     }
@@ -73,5 +52,34 @@ class FadePageRoute<T> extends PageRouteBuilder<T> {
               child: child,
             );
           },
+        );
+}
+
+class SlideFromBottomPageRoute<T> extends PageRouteBuilder<T> {
+  final Widget page;
+
+  SlideFromBottomPageRoute({required this.page})
+      : super(
+          pageBuilder: (context, animation, secondaryAnimation) => page,
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            const offsetBegin = Offset(0.0, 1.0);
+            const offsetEnd = Offset.zero;
+
+            final curvedAnimation = CurvedAnimation(
+              parent: animation,
+              curve: Curves.easeInOut,
+            );
+
+            final tween = Tween<Offset>(
+              begin: offsetBegin,
+              end: offsetEnd,
+            ).animate(curvedAnimation);
+
+            return SlideTransition(
+              position: tween,
+              child: child,
+            );
+          },
+          transitionDuration: const Duration(milliseconds: 850),
         );
 }

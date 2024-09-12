@@ -35,7 +35,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     });
 
     on<AddProductEvent>((event, emit) async {
-      //   emit(const CartState.loading());
+      emit(const CartState.loading());
 
       final failureOrSuccess =
           await addProductToCartUseCase(event.id, event.quantity);
@@ -75,8 +75,6 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         },
         (cart) async {
           emit(CartState.loaded(cart));
-
-    
         },
       );
     });

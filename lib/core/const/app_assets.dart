@@ -12,6 +12,12 @@ class AppAssets {
   // Path to Lottie animation assets
   static const String errorLottie = "images/GzcCWUwuvh.json";
 
+  // Path to flare animation assets
+  static const String heart2 = "images/heart like.flr";
+
+  static const String heart3 = "images/FavoriteHeart.flr";
+
   //hive boxes
   static const String productsBox = "appProductBox";
+  static const String userBox = "appUserBox";
 }

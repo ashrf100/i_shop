@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:i_shop/core/const/app_colors.dart';
 import 'package:i_shop/core/const/app_consts.dart';
 import 'package:i_shop/core/const/app_text_styles.dart';
 import 'package:i_shop/core/widgets/spacer_widget.dart';
 import 'package:i_shop/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:i_shop/features/cart/presentation/bloc/cart_event.dart';
+import 'package:i_shop/features/cart/presentation/bloc/cart_state.dart';
 import 'package:i_shop/features/products/domain/entities/app_product.dart';
 import 'package:i_shop/features/products/presentation/widgets/product_page/product_description.dart';
 import 'package:i_shop/features/products/presentation/widgets/product_page/product_details.dart';
 import 'package:i_shop/features/products/presentation/widgets/product_page/product_image_carousel.dart';
 import 'package:i_shop/features/products/presentation/widgets/product_page/product_info_table.dart';
 import 'package:i_shop/features/products/presentation/widgets/product_page/product_reviews.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class ProductPage extends StatefulWidget {
   final AppProduct product;
@@ -84,60 +88,100 @@ class _AddToCartButton extends StatelessWidget {
       bottom: 16.0.h,
       child: Container(
         width: 300.w,
-        height: 50.h,
+        height: 45.h,
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: AppColors.darkGray,
           borderRadius: BorderRadius.circular(25.r),
         ),
-        child: ElevatedButton(
-          onPressed: () {
-            final cartBloc = BlocProvider.of<CartBloc>(context);
-            cartBloc.add(AddProductEvent(product.id, quantity));
-
-            cartBloc.stream.listen((state) {
-              state.maybeWhen(
-                error: (msg) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('Error: $msg'),
-                      backgroundColor: Colors.red,
-                    ),
-                  );
-                },
-                loaded: (cart) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Product added to cart successfully!'),
-                      backgroundColor: Colors.green,
-                    ),
-                  );
-                },
-                orElse: () {},
-              );
-            });
+        child: BlocConsumer<CartBloc, CartState>(
+          listener: (context, state) {
+            state.maybeWhen(
+              error: (msg) {
+                Alert(
+                  style: AlertStyle(backgroundColor: AppColors.white),
+                  context: context,
+                  type: AlertType.error,
+                  title: "Error",
+                  desc: "Error adding product to cart!",
+                  buttons: [
+                    DialogButton(
+                      child: Text(
+                        "OK",
+                        style: TextStyle(
+                            color: const Color.fromARGB(255, 255, 207, 207),
+                            fontSize: 20),
+                      ),
+                      onPressed: () => Navigator.pop(context),
+                      width: 120,
+                    )
+                  ],
+                ).show();
+              },
+              loaded: (cart) {
+                Alert(
+                  style: AlertStyle(backgroundColor: AppColors.white),
+                  context: context,
+                  type: AlertType.success,
+                  title: "Success",
+                  desc: "${product.title} \n added to Cart!",
+                  buttons: [
+                    DialogButton(
+                      child: Text(
+                        "OK",
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      onPressed: () => Navigator.pop(context),
+                      width: 120,
+                    )
+                  ],
+                ).show();
+              },
+              orElse: () {},
+            );
           },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: AppColors.darkGray,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(25.r),
-            ),
-            padding: EdgeInsets.zero,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                AppConsts.addToCartText,
-                style: AppTextStyles.white14Regular,
+          builder: (context, state) {
+            final isLoading = state is CartLoadingState;
+
+            return ElevatedButton(
+              onPressed: isLoading
+                  ? null
+                  : () {
+                      final cartBloc = BlocProvider.of<CartBloc>(context);
+                      cartBloc.add(AddProductEvent(product.id, quantity));
+                    },
+              style: ElevatedButton.styleFrom(
+                backgroundColor:
+                    isLoading ? AppColors.lightGray : AppColors.darkGray,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25.r),
+                ),
+                padding: EdgeInsets.zero,
               ),
-              SizedBox(width: 8.w),
-              Text(
-                product.price.toString(),
-                style: AppTextStyles.white14Regular,
+              child: state.maybeWhen(
+                loading: () => SpinKitThreeBounce(
+                  color: AppColors.white,
+                  size: 20.sp,
+                ),
+                orElse: () => Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(Icons.add_shopping_cart, color: Colors.white),
+                    SizedBox(width: 8.w),
+                    Text(
+                      AppConsts.addToCartText,
+                      style: AppTextStyles.white14Regular,
+                    ),
+                    SizedBox(width: 8.w),
+                    Text(
+                      product.price.toString(),
+                      style: AppTextStyles.white14Regular,
+                    ),
+                  ],
+                ),
               ),
-            ],
-          ),
+            );
+          },
         ),
       ),
     );

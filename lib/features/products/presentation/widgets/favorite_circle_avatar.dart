@@ -5,9 +5,10 @@ import 'package:i_shop/features/products/domain/entities/app_product.dart';
 import 'package:i_shop/features/products/presentation/bloc/Favorite/favorite_bloc.dart';
 import 'package:i_shop/features/products/presentation/bloc/Favorite/favorite_event.dart';
 import 'package:i_shop/features/products/presentation/bloc/Favorite/favorite_state.dart';
-import 'package:i_shop/injection_container.dart' as di;
+import 'package:flare_flutter/flare_actor.dart';
+import 'package:i_shop/core/const/app_assets.dart';
 
-class FavoriteCircleAvatar extends StatefulWidget {
+class FavoriteCircleAvatar extends StatelessWidget {
   final AppProduct appProduct;
 
   const FavoriteCircleAvatar({
@@ -16,59 +17,52 @@ class FavoriteCircleAvatar extends StatefulWidget {
   });
 
   @override
-  State<FavoriteCircleAvatar> createState() => _FavoriteCircleAvatarState();
-}
-
-class _FavoriteCircleAvatarState extends State<FavoriteCircleAvatar> {
-  late bool isFavorited;
-
-  @override
-  void initState() {
-    super.initState();
-    isFavorited = widget.appProduct.isFavorite;
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return BlocProvider.value(
-      value: di.sl<FavoritesBloc>(),
-      child: BlocConsumer<FavoritesBloc, FavoritesState>(
-        listener: (context, state) {
-          state.maybeWhen(
-            loaded: (products) {
-              setState(() {
-                isFavorited = products.any((product) =>
-                    product.id == widget.appProduct.id && product.isFavorite);
-              });
+    return BlocBuilder<FavoritesBloc, FavoritesState>(
+      builder: (context, state) {
+        final isFavorited = state.maybeWhen(
+          loaded: (products) =>
+              products.any((product) => product.id == appProduct.id),
+          orElse: () => false,
+        );
+
+        return CircleAvatar(
+          backgroundColor: AppColors.darkGray,
+          child: GestureDetector(
+            onTap: () {
+              if (isFavorited) {
+                context.read<FavoritesBloc>().add(
+                      RemoveFavoriteEvent(appProduct.id.toString()),
+                    );
+              } else {
+                context.read<FavoritesBloc>().add(
+                      AddFavoriteEvent(appProduct.copyWith(isFavorite: true)),
+                    );
+              }
             },
-            orElse: () {},
-          );
-        },
-        builder: (context, state) {
-          return CircleAvatar(
-            backgroundColor: AppColors.darkGray,
-            child: AnimatedSwitcher(
-              duration: const Duration(milliseconds: 300),
-              child: IconButton(
-                key: ValueKey<bool>(isFavorited),
-                icon: Icon(
-                  isFavorited ? Icons.favorite_rounded : Icons.favorite_border,
-                  color: AppColors.white,
-                ),
-                onPressed: () {
-                  if (isFavorited) {
-                    context.read<FavoritesBloc>().add(
-                        RemoveFavoriteEvent(widget.appProduct.id.toString()));
-                  } else {
-                    context.read<FavoritesBloc>().add(AddFavoriteEvent(
-                        widget.appProduct.copyWith(isFavorite: true)));
-                  }
-                },
+            child: Center(
+              child: AnimatedSwitcher(
+                duration: const Duration(milliseconds: 300),
+                child: isFavorited
+                    ? const Padding(
+                        padding: EdgeInsets.only(left: 1.5, top: 1),
+                        child: FlareActor(
+                          color: AppColors.white,
+                          fit: BoxFit.cover,
+                          AppAssets.heart2,
+                          animation: 'Like heart',
+                        ),
+                      )
+                    : const Icon(
+                        Icons.favorite_border,
+                        color: AppColors.white,
+                        size: 24,
+                      ),
               ),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

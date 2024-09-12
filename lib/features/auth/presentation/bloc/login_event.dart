@@ -9,4 +9,7 @@ class LoginEvent with _$LoginEvent {
 
   const factory LoginEvent.googleLoginRequested() = GoogleLoginRequested;
   const factory LoginEvent.facebookLoginRequested() = FacebookLoginRequested;
+  const factory LoginEvent.logoutRequested() = LogoutRequested;
+    const factory LoginEvent.loginInit() = LoginInit;
+
 }

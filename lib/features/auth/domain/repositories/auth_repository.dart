@@ -9,4 +9,6 @@ abstract class AuthRepository {
   });
   Future<Either<AppException, AppUser>> loginWithGoogle();
   Future<Either<AppException, AppUser>> loginWithFacebook();
+
+  Future<Either<AppException, AppUser>>  getUser();
 }

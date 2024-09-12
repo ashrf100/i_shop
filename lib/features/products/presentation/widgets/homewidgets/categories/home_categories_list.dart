@@ -10,7 +10,7 @@ import 'package:i_shop/features/products/presentation/widgets/homewidgets/catego
 import 'package:animate_do/animate_do.dart';
 
 class CategoriesHorizontalList extends StatelessWidget {
-  const CategoriesHorizontalList({Key? key}) : super(key: key);
+  const CategoriesHorizontalList({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +34,8 @@ class CategoriesHorizontalList extends StatelessWidget {
             }
             return const SizedBox.shrink();
           },
+          products: (products, categories) =>
+              CategoryListWidget(categories: categories),
           orElse: () => const SizedBox.shrink(),
         );
       },
@@ -42,7 +44,7 @@ class CategoriesHorizontalList extends StatelessWidget {
 }
 
 class CategoriesLoadingPlaceholder extends StatelessWidget {
-  const CategoriesLoadingPlaceholder({Key? key}) : super(key: key);
+  const CategoriesLoadingPlaceholder({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -61,9 +63,9 @@ class CategoryListWidget extends StatelessWidget {
   final List<AppCategory> categories;
 
   const CategoryListWidget({
-    Key? key,
+    super.key,
     required this.categories,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

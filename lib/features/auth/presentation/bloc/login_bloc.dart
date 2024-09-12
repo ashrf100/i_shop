@@ -11,17 +11,20 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   final LoginWithGoogleUseCase loginWithGoogleUseCase;
   final LoginWithFacebookUseCase loginWithFacebookUseCase;
+  final GetUserUseCase getUserUseCase;
 
   AppUser? appUser;
   LoginBloc(
       {required this.loginUserUseCase,
       required this.loginWithGoogleUseCase,
+      required this.getUserUseCase,
       required this.loginWithFacebookUseCase})
       : super(const LoginInitial()) {
     on<LoginRequested>(_onLoginRequested, transformer: droppable());
     on<GoogleLoginRequested>(_onGoogleLoginRequested, transformer: droppable());
     on<FacebookLoginRequested>(_onFacebookLoginRequested,
         transformer: droppable());
+    on<LoginInit>(_onLoginInit);
   }
 
   Future<void> _onLoginRequested(
@@ -68,5 +71,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       (exception) => emit(LoginError(exception.message)),
       (user) => emit(LoginSuccess(user)),
     );
+  }
+
+  Future<void> _onLoginInit(LoginInit event, Emitter<LoginState> emit) async {
+    final user = await getUserUseCase.call();
+    user.fold((l) => emit(LoginError(l.message)), (r) => emit(LoginSuccess(r)));
   }
 }

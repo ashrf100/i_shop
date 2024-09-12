@@ -14,7 +14,6 @@ class LoadedCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Filter products with quantity > 0
     final filteredProducts =
         cart.products.where((product) => product.quantity > 0).toList();
 

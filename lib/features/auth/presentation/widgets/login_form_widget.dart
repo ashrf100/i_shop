@@ -63,8 +63,11 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
             widget._animationController
                 .forward()
                 .then((_) => widget._animationController.reverse())
-                .then((_) =>
-                    Navigator.pushReplacementNamed(context, AppRoutes.main));
+                .then((_) => Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      AppRoutes.main,
+                      (Route<dynamic> route) => false,
+                    ));
           },
           error: (e) {
             setState(() {

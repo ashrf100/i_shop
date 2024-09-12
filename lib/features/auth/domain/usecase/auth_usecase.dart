@@ -34,3 +34,14 @@ class LoginWithFacebookUseCase {
     return await repository.loginWithFacebook();
   }
 }
+
+
+class GetUserUseCase {
+  final AuthRepository repository;
+
+  GetUserUseCase(this.repository);
+
+  Future<Either<AppException, AppUser>> call() async {
+    return await repository.getUser();
+  }
+}

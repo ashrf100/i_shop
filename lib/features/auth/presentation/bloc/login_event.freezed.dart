@@ -21,6 +21,8 @@ mixin _$LoginEvent {
     required TResult Function(String username, String password) loginRequested,
     required TResult Function() googleLoginRequested,
     required TResult Function() facebookLoginRequested,
+    required TResult Function() logoutRequested,
+    required TResult Function() loginInit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +30,8 @@ mixin _$LoginEvent {
     TResult? Function(String username, String password)? loginRequested,
     TResult? Function()? googleLoginRequested,
     TResult? Function()? facebookLoginRequested,
+    TResult? Function()? logoutRequested,
+    TResult? Function()? loginInit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +39,8 @@ mixin _$LoginEvent {
     TResult Function(String username, String password)? loginRequested,
     TResult Function()? googleLoginRequested,
     TResult Function()? facebookLoginRequested,
+    TResult Function()? logoutRequested,
+    TResult Function()? loginInit,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -44,6 +50,8 @@ mixin _$LoginEvent {
     required TResult Function(GoogleLoginRequested value) googleLoginRequested,
     required TResult Function(FacebookLoginRequested value)
         facebookLoginRequested,
+    required TResult Function(LogoutRequested value) logoutRequested,
+    required TResult Function(LoginInit value) loginInit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,6 +59,8 @@ mixin _$LoginEvent {
     TResult? Function(LoginRequested value)? loginRequested,
     TResult? Function(GoogleLoginRequested value)? googleLoginRequested,
     TResult? Function(FacebookLoginRequested value)? facebookLoginRequested,
+    TResult? Function(LogoutRequested value)? logoutRequested,
+    TResult? Function(LoginInit value)? loginInit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,6 +68,8 @@ mixin _$LoginEvent {
     TResult Function(LoginRequested value)? loginRequested,
     TResult Function(GoogleLoginRequested value)? googleLoginRequested,
     TResult Function(FacebookLoginRequested value)? facebookLoginRequested,
+    TResult Function(LogoutRequested value)? logoutRequested,
+    TResult Function(LoginInit value)? loginInit,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -159,6 +171,8 @@ class _$LoginRequestedImpl implements LoginRequested {
     required TResult Function(String username, String password) loginRequested,
     required TResult Function() googleLoginRequested,
     required TResult Function() facebookLoginRequested,
+    required TResult Function() logoutRequested,
+    required TResult Function() loginInit,
   }) {
     return loginRequested(username, password);
   }
@@ -169,6 +183,8 @@ class _$LoginRequestedImpl implements LoginRequested {
     TResult? Function(String username, String password)? loginRequested,
     TResult? Function()? googleLoginRequested,
     TResult? Function()? facebookLoginRequested,
+    TResult? Function()? logoutRequested,
+    TResult? Function()? loginInit,
   }) {
     return loginRequested?.call(username, password);
   }
@@ -179,6 +195,8 @@ class _$LoginRequestedImpl implements LoginRequested {
     TResult Function(String username, String password)? loginRequested,
     TResult Function()? googleLoginRequested,
     TResult Function()? facebookLoginRequested,
+    TResult Function()? logoutRequested,
+    TResult Function()? loginInit,
     required TResult orElse(),
   }) {
     if (loginRequested != null) {
@@ -194,6 +212,8 @@ class _$LoginRequestedImpl implements LoginRequested {
     required TResult Function(GoogleLoginRequested value) googleLoginRequested,
     required TResult Function(FacebookLoginRequested value)
         facebookLoginRequested,
+    required TResult Function(LogoutRequested value) logoutRequested,
+    required TResult Function(LoginInit value) loginInit,
   }) {
     return loginRequested(this);
   }
@@ -204,6 +224,8 @@ class _$LoginRequestedImpl implements LoginRequested {
     TResult? Function(LoginRequested value)? loginRequested,
     TResult? Function(GoogleLoginRequested value)? googleLoginRequested,
     TResult? Function(FacebookLoginRequested value)? facebookLoginRequested,
+    TResult? Function(LogoutRequested value)? logoutRequested,
+    TResult? Function(LoginInit value)? loginInit,
   }) {
     return loginRequested?.call(this);
   }
@@ -214,6 +236,8 @@ class _$LoginRequestedImpl implements LoginRequested {
     TResult Function(LoginRequested value)? loginRequested,
     TResult Function(GoogleLoginRequested value)? googleLoginRequested,
     TResult Function(FacebookLoginRequested value)? facebookLoginRequested,
+    TResult Function(LogoutRequested value)? logoutRequested,
+    TResult Function(LoginInit value)? loginInit,
     required TResult orElse(),
   }) {
     if (loginRequested != null) {
@@ -277,6 +301,8 @@ class _$GoogleLoginRequestedImpl implements GoogleLoginRequested {
     required TResult Function(String username, String password) loginRequested,
     required TResult Function() googleLoginRequested,
     required TResult Function() facebookLoginRequested,
+    required TResult Function() logoutRequested,
+    required TResult Function() loginInit,
   }) {
     return googleLoginRequested();
   }
@@ -287,6 +313,8 @@ class _$GoogleLoginRequestedImpl implements GoogleLoginRequested {
     TResult? Function(String username, String password)? loginRequested,
     TResult? Function()? googleLoginRequested,
     TResult? Function()? facebookLoginRequested,
+    TResult? Function()? logoutRequested,
+    TResult? Function()? loginInit,
   }) {
     return googleLoginRequested?.call();
   }
@@ -297,6 +325,8 @@ class _$GoogleLoginRequestedImpl implements GoogleLoginRequested {
     TResult Function(String username, String password)? loginRequested,
     TResult Function()? googleLoginRequested,
     TResult Function()? facebookLoginRequested,
+    TResult Function()? logoutRequested,
+    TResult Function()? loginInit,
     required TResult orElse(),
   }) {
     if (googleLoginRequested != null) {
@@ -312,6 +342,8 @@ class _$GoogleLoginRequestedImpl implements GoogleLoginRequested {
     required TResult Function(GoogleLoginRequested value) googleLoginRequested,
     required TResult Function(FacebookLoginRequested value)
         facebookLoginRequested,
+    required TResult Function(LogoutRequested value) logoutRequested,
+    required TResult Function(LoginInit value) loginInit,
   }) {
     return googleLoginRequested(this);
   }
@@ -322,6 +354,8 @@ class _$GoogleLoginRequestedImpl implements GoogleLoginRequested {
     TResult? Function(LoginRequested value)? loginRequested,
     TResult? Function(GoogleLoginRequested value)? googleLoginRequested,
     TResult? Function(FacebookLoginRequested value)? facebookLoginRequested,
+    TResult? Function(LogoutRequested value)? logoutRequested,
+    TResult? Function(LoginInit value)? loginInit,
   }) {
     return googleLoginRequested?.call(this);
   }
@@ -332,6 +366,8 @@ class _$GoogleLoginRequestedImpl implements GoogleLoginRequested {
     TResult Function(LoginRequested value)? loginRequested,
     TResult Function(GoogleLoginRequested value)? googleLoginRequested,
     TResult Function(FacebookLoginRequested value)? facebookLoginRequested,
+    TResult Function(LogoutRequested value)? logoutRequested,
+    TResult Function(LoginInit value)? loginInit,
     required TResult orElse(),
   }) {
     if (googleLoginRequested != null) {
@@ -389,6 +425,8 @@ class _$FacebookLoginRequestedImpl implements FacebookLoginRequested {
     required TResult Function(String username, String password) loginRequested,
     required TResult Function() googleLoginRequested,
     required TResult Function() facebookLoginRequested,
+    required TResult Function() logoutRequested,
+    required TResult Function() loginInit,
   }) {
     return facebookLoginRequested();
   }
@@ -399,6 +437,8 @@ class _$FacebookLoginRequestedImpl implements FacebookLoginRequested {
     TResult? Function(String username, String password)? loginRequested,
     TResult? Function()? googleLoginRequested,
     TResult? Function()? facebookLoginRequested,
+    TResult? Function()? logoutRequested,
+    TResult? Function()? loginInit,
   }) {
     return facebookLoginRequested?.call();
   }
@@ -409,6 +449,8 @@ class _$FacebookLoginRequestedImpl implements FacebookLoginRequested {
     TResult Function(String username, String password)? loginRequested,
     TResult Function()? googleLoginRequested,
     TResult Function()? facebookLoginRequested,
+    TResult Function()? logoutRequested,
+    TResult Function()? loginInit,
     required TResult orElse(),
   }) {
     if (facebookLoginRequested != null) {
@@ -424,6 +466,8 @@ class _$FacebookLoginRequestedImpl implements FacebookLoginRequested {
     required TResult Function(GoogleLoginRequested value) googleLoginRequested,
     required TResult Function(FacebookLoginRequested value)
         facebookLoginRequested,
+    required TResult Function(LogoutRequested value) logoutRequested,
+    required TResult Function(LoginInit value) loginInit,
   }) {
     return facebookLoginRequested(this);
   }
@@ -434,6 +478,8 @@ class _$FacebookLoginRequestedImpl implements FacebookLoginRequested {
     TResult? Function(LoginRequested value)? loginRequested,
     TResult? Function(GoogleLoginRequested value)? googleLoginRequested,
     TResult? Function(FacebookLoginRequested value)? facebookLoginRequested,
+    TResult? Function(LogoutRequested value)? logoutRequested,
+    TResult? Function(LoginInit value)? loginInit,
   }) {
     return facebookLoginRequested?.call(this);
   }
@@ -444,6 +490,8 @@ class _$FacebookLoginRequestedImpl implements FacebookLoginRequested {
     TResult Function(LoginRequested value)? loginRequested,
     TResult Function(GoogleLoginRequested value)? googleLoginRequested,
     TResult Function(FacebookLoginRequested value)? facebookLoginRequested,
+    TResult Function(LogoutRequested value)? logoutRequested,
+    TResult Function(LoginInit value)? loginInit,
     required TResult orElse(),
   }) {
     if (facebookLoginRequested != null) {
@@ -455,4 +503,246 @@ class _$FacebookLoginRequestedImpl implements FacebookLoginRequested {
 
 abstract class FacebookLoginRequested implements LoginEvent {
   const factory FacebookLoginRequested() = _$FacebookLoginRequestedImpl;
+}
+
+/// @nodoc
+abstract class _$$LogoutRequestedImplCopyWith<$Res> {
+  factory _$$LogoutRequestedImplCopyWith(_$LogoutRequestedImpl value,
+          $Res Function(_$LogoutRequestedImpl) then) =
+      __$$LogoutRequestedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LogoutRequestedImplCopyWithImpl<$Res>
+    extends _$LoginEventCopyWithImpl<$Res, _$LogoutRequestedImpl>
+    implements _$$LogoutRequestedImplCopyWith<$Res> {
+  __$$LogoutRequestedImplCopyWithImpl(
+      _$LogoutRequestedImpl _value, $Res Function(_$LogoutRequestedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LogoutRequestedImpl implements LogoutRequested {
+  const _$LogoutRequestedImpl();
+
+  @override
+  String toString() {
+    return 'LoginEvent.logoutRequested()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LogoutRequestedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String username, String password) loginRequested,
+    required TResult Function() googleLoginRequested,
+    required TResult Function() facebookLoginRequested,
+    required TResult Function() logoutRequested,
+    required TResult Function() loginInit,
+  }) {
+    return logoutRequested();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String username, String password)? loginRequested,
+    TResult? Function()? googleLoginRequested,
+    TResult? Function()? facebookLoginRequested,
+    TResult? Function()? logoutRequested,
+    TResult? Function()? loginInit,
+  }) {
+    return logoutRequested?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String username, String password)? loginRequested,
+    TResult Function()? googleLoginRequested,
+    TResult Function()? facebookLoginRequested,
+    TResult Function()? logoutRequested,
+    TResult Function()? loginInit,
+    required TResult orElse(),
+  }) {
+    if (logoutRequested != null) {
+      return logoutRequested();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoginRequested value) loginRequested,
+    required TResult Function(GoogleLoginRequested value) googleLoginRequested,
+    required TResult Function(FacebookLoginRequested value)
+        facebookLoginRequested,
+    required TResult Function(LogoutRequested value) logoutRequested,
+    required TResult Function(LoginInit value) loginInit,
+  }) {
+    return logoutRequested(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoginRequested value)? loginRequested,
+    TResult? Function(GoogleLoginRequested value)? googleLoginRequested,
+    TResult? Function(FacebookLoginRequested value)? facebookLoginRequested,
+    TResult? Function(LogoutRequested value)? logoutRequested,
+    TResult? Function(LoginInit value)? loginInit,
+  }) {
+    return logoutRequested?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoginRequested value)? loginRequested,
+    TResult Function(GoogleLoginRequested value)? googleLoginRequested,
+    TResult Function(FacebookLoginRequested value)? facebookLoginRequested,
+    TResult Function(LogoutRequested value)? logoutRequested,
+    TResult Function(LoginInit value)? loginInit,
+    required TResult orElse(),
+  }) {
+    if (logoutRequested != null) {
+      return logoutRequested(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LogoutRequested implements LoginEvent {
+  const factory LogoutRequested() = _$LogoutRequestedImpl;
+}
+
+/// @nodoc
+abstract class _$$LoginInitImplCopyWith<$Res> {
+  factory _$$LoginInitImplCopyWith(
+          _$LoginInitImpl value, $Res Function(_$LoginInitImpl) then) =
+      __$$LoginInitImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoginInitImplCopyWithImpl<$Res>
+    extends _$LoginEventCopyWithImpl<$Res, _$LoginInitImpl>
+    implements _$$LoginInitImplCopyWith<$Res> {
+  __$$LoginInitImplCopyWithImpl(
+      _$LoginInitImpl _value, $Res Function(_$LoginInitImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoginInitImpl implements LoginInit {
+  const _$LoginInitImpl();
+
+  @override
+  String toString() {
+    return 'LoginEvent.loginInit()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoginInitImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String username, String password) loginRequested,
+    required TResult Function() googleLoginRequested,
+    required TResult Function() facebookLoginRequested,
+    required TResult Function() logoutRequested,
+    required TResult Function() loginInit,
+  }) {
+    return loginInit();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String username, String password)? loginRequested,
+    TResult? Function()? googleLoginRequested,
+    TResult? Function()? facebookLoginRequested,
+    TResult? Function()? logoutRequested,
+    TResult? Function()? loginInit,
+  }) {
+    return loginInit?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String username, String password)? loginRequested,
+    TResult Function()? googleLoginRequested,
+    TResult Function()? facebookLoginRequested,
+    TResult Function()? logoutRequested,
+    TResult Function()? loginInit,
+    required TResult orElse(),
+  }) {
+    if (loginInit != null) {
+      return loginInit();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoginRequested value) loginRequested,
+    required TResult Function(GoogleLoginRequested value) googleLoginRequested,
+    required TResult Function(FacebookLoginRequested value)
+        facebookLoginRequested,
+    required TResult Function(LogoutRequested value) logoutRequested,
+    required TResult Function(LoginInit value) loginInit,
+  }) {
+    return loginInit(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoginRequested value)? loginRequested,
+    TResult? Function(GoogleLoginRequested value)? googleLoginRequested,
+    TResult? Function(FacebookLoginRequested value)? facebookLoginRequested,
+    TResult? Function(LogoutRequested value)? logoutRequested,
+    TResult? Function(LoginInit value)? loginInit,
+  }) {
+    return loginInit?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoginRequested value)? loginRequested,
+    TResult Function(GoogleLoginRequested value)? googleLoginRequested,
+    TResult Function(FacebookLoginRequested value)? facebookLoginRequested,
+    TResult Function(LogoutRequested value)? logoutRequested,
+    TResult Function(LoginInit value)? loginInit,
+    required TResult orElse(),
+  }) {
+    if (loginInit != null) {
+      return loginInit(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoginInit implements LoginEvent {
+  const factory LoginInit() = _$LoginInitImpl;
 }

@@ -59,35 +59,31 @@ class _FavoritesPageState extends State<FavoritesPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          di.sl<FavoritesBloc>()..add(const FavoritesEvent.loadFavorites()),
-      child: BlocBuilder<FavoritesBloc, FavoritesState>(
-        builder: (context, state) {
-          return Scaffold(
-            backgroundColor: AppColors.white,
-            body: Stack(
-              children: [
-                Column(
-                  children: [
-                    SpacerWidget.vertical(height: 5.h),
-                    const FavoritesHeader(),
-                    SpacerWidget.vertical(height: 15.h),
-                    Expanded(
-                      child: FavoritesBody(
-                        scrollController: _scrollController,
-                        showLoadingDialog: _showLoadingDialog,
-                        hideLoadingDialog: _hideLoadingDialog,
-                      ),
+    return BlocBuilder<FavoritesBloc, FavoritesState>(
+      builder: (context, state) {
+        return Scaffold(
+          backgroundColor: AppColors.white,
+          body: Stack(
+            children: [
+              Column(
+                children: [
+                  SpacerWidget.vertical(height: 5.h),
+                  const FavoritesHeader(),
+                  SpacerWidget.vertical(height: 15.h),
+                  Expanded(
+                    child: FavoritesBody(
+                      scrollController: _scrollController,
+                      showLoadingDialog: _showLoadingDialog,
+                      hideLoadingDialog: _hideLoadingDialog,
                     ),
-                  ],
-                ),
-                buildBackGround(),
-              ],
-            ),
-          );
-        },
-      ),
+                  ),
+                ],
+              ),
+              buildBackGround(),
+            ],
+          ),
+        );
+      },
     );
   }
 }

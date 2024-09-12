@@ -21,7 +21,14 @@ class CartProductItem extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
       decoration: BoxDecoration(
         color: AppColors.white,
-        borderRadius: BorderRadius.circular(10.r),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1), // Light shadow for depth
+            spreadRadius: 1,
+            blurRadius: 10,
+            offset: Offset(0, 5), // Adds smooth elevation
+          ),
+        ],
       ),
       child: Row(
         children: [
@@ -86,7 +93,12 @@ class _TitleAndSubtitle extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(cartProduct.title, style: AppTextStyles.darkGray16Bold),
+            SizedBox(
+              width: 180.w,
+              child: Text(cartProduct.title,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppTextStyles.darkGray16Bold),
+            ),
             Text(cartProduct.discountedPrice.toString(),
                 style: AppTextStyles.gray14Regular),
           ],

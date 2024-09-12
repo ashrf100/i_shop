@@ -16,7 +16,7 @@ class HomeStaggeredGridHelper extends StatelessWidget {
           return state.maybeWhen(
             loading: () => const LoadingProductsGrid(),
             productsLoading: () => const LoadingProductsGrid(),
-            products: (products) => ProductsGrid(products: products),
+            products: (products , c) => ProductsGrid(products: products),
             init: (products, categories) => ProductsGrid(products: products),
             error: (msg) => ErrorNotification(message: msg),
             orElse: () => const SizedBox.shrink(),

@@ -24,7 +24,9 @@ mixin _$HomeState {
             List<AppProduct> products, List<AppCategory> categories)
         init,
     required TResult Function() productsLoading,
-    required TResult Function(List<AppProduct> products) products,
+    required TResult Function(
+            List<AppProduct> products, List<AppCategory> categories)
+        products,
     required TResult Function(String msg, AppCategory? category,
             String? searchText, SortBy? sortBy, Sortorder? order)
         productsError,
@@ -37,7 +39,8 @@ mixin _$HomeState {
     TResult? Function(List<AppProduct> products, List<AppCategory> categories)?
         init,
     TResult? Function()? productsLoading,
-    TResult? Function(List<AppProduct> products)? products,
+    TResult? Function(List<AppProduct> products, List<AppCategory> categories)?
+        products,
     TResult? Function(String msg, AppCategory? category, String? searchText,
             SortBy? sortBy, Sortorder? order)?
         productsError,
@@ -50,7 +53,8 @@ mixin _$HomeState {
     TResult Function(List<AppProduct> products, List<AppCategory> categories)?
         init,
     TResult Function()? productsLoading,
-    TResult Function(List<AppProduct> products)? products,
+    TResult Function(List<AppProduct> products, List<AppCategory> categories)?
+        products,
     TResult Function(String msg, AppCategory? category, String? searchText,
             SortBy? sortBy, Sortorder? order)?
         productsError,
@@ -151,7 +155,9 @@ class _$LoadingHomeStateImpl implements LoadingHomeState {
             List<AppProduct> products, List<AppCategory> categories)
         init,
     required TResult Function() productsLoading,
-    required TResult Function(List<AppProduct> products) products,
+    required TResult Function(
+            List<AppProduct> products, List<AppCategory> categories)
+        products,
     required TResult Function(String msg, AppCategory? category,
             String? searchText, SortBy? sortBy, Sortorder? order)
         productsError,
@@ -167,7 +173,8 @@ class _$LoadingHomeStateImpl implements LoadingHomeState {
     TResult? Function(List<AppProduct> products, List<AppCategory> categories)?
         init,
     TResult? Function()? productsLoading,
-    TResult? Function(List<AppProduct> products)? products,
+    TResult? Function(List<AppProduct> products, List<AppCategory> categories)?
+        products,
     TResult? Function(String msg, AppCategory? category, String? searchText,
             SortBy? sortBy, Sortorder? order)?
         productsError,
@@ -183,7 +190,8 @@ class _$LoadingHomeStateImpl implements LoadingHomeState {
     TResult Function(List<AppProduct> products, List<AppCategory> categories)?
         init,
     TResult Function()? productsLoading,
-    TResult Function(List<AppProduct> products)? products,
+    TResult Function(List<AppProduct> products, List<AppCategory> categories)?
+        products,
     TResult Function(String msg, AppCategory? category, String? searchText,
             SortBy? sortBy, Sortorder? order)?
         productsError,
@@ -314,7 +322,9 @@ class _$ErrorHomeStateImpl implements ErrorHomeState {
             List<AppProduct> products, List<AppCategory> categories)
         init,
     required TResult Function() productsLoading,
-    required TResult Function(List<AppProduct> products) products,
+    required TResult Function(
+            List<AppProduct> products, List<AppCategory> categories)
+        products,
     required TResult Function(String msg, AppCategory? category,
             String? searchText, SortBy? sortBy, Sortorder? order)
         productsError,
@@ -330,7 +340,8 @@ class _$ErrorHomeStateImpl implements ErrorHomeState {
     TResult? Function(List<AppProduct> products, List<AppCategory> categories)?
         init,
     TResult? Function()? productsLoading,
-    TResult? Function(List<AppProduct> products)? products,
+    TResult? Function(List<AppProduct> products, List<AppCategory> categories)?
+        products,
     TResult? Function(String msg, AppCategory? category, String? searchText,
             SortBy? sortBy, Sortorder? order)?
         productsError,
@@ -346,7 +357,8 @@ class _$ErrorHomeStateImpl implements ErrorHomeState {
     TResult Function(List<AppProduct> products, List<AppCategory> categories)?
         init,
     TResult Function()? productsLoading,
-    TResult Function(List<AppProduct> products)? products,
+    TResult Function(List<AppProduct> products, List<AppCategory> categories)?
+        products,
     TResult Function(String msg, AppCategory? category, String? searchText,
             SortBy? sortBy, Sortorder? order)?
         productsError,
@@ -508,7 +520,9 @@ class _$InitHomeStateImpl implements InitHomeState {
             List<AppProduct> products, List<AppCategory> categories)
         init,
     required TResult Function() productsLoading,
-    required TResult Function(List<AppProduct> products) products,
+    required TResult Function(
+            List<AppProduct> products, List<AppCategory> categories)
+        products,
     required TResult Function(String msg, AppCategory? category,
             String? searchText, SortBy? sortBy, Sortorder? order)
         productsError,
@@ -524,7 +538,8 @@ class _$InitHomeStateImpl implements InitHomeState {
     TResult? Function(List<AppProduct> products, List<AppCategory> categories)?
         init,
     TResult? Function()? productsLoading,
-    TResult? Function(List<AppProduct> products)? products,
+    TResult? Function(List<AppProduct> products, List<AppCategory> categories)?
+        products,
     TResult? Function(String msg, AppCategory? category, String? searchText,
             SortBy? sortBy, Sortorder? order)?
         productsError,
@@ -540,7 +555,8 @@ class _$InitHomeStateImpl implements InitHomeState {
     TResult Function(List<AppProduct> products, List<AppCategory> categories)?
         init,
     TResult Function()? productsLoading,
-    TResult Function(List<AppProduct> products)? products,
+    TResult Function(List<AppProduct> products, List<AppCategory> categories)?
+        products,
     TResult Function(String msg, AppCategory? category, String? searchText,
             SortBy? sortBy, Sortorder? order)?
         productsError,
@@ -653,7 +669,9 @@ class _$ProductsLoadingStateImpl implements ProductsLoadingState {
             List<AppProduct> products, List<AppCategory> categories)
         init,
     required TResult Function() productsLoading,
-    required TResult Function(List<AppProduct> products) products,
+    required TResult Function(
+            List<AppProduct> products, List<AppCategory> categories)
+        products,
     required TResult Function(String msg, AppCategory? category,
             String? searchText, SortBy? sortBy, Sortorder? order)
         productsError,
@@ -669,7 +687,8 @@ class _$ProductsLoadingStateImpl implements ProductsLoadingState {
     TResult? Function(List<AppProduct> products, List<AppCategory> categories)?
         init,
     TResult? Function()? productsLoading,
-    TResult? Function(List<AppProduct> products)? products,
+    TResult? Function(List<AppProduct> products, List<AppCategory> categories)?
+        products,
     TResult? Function(String msg, AppCategory? category, String? searchText,
             SortBy? sortBy, Sortorder? order)?
         productsError,
@@ -685,7 +704,8 @@ class _$ProductsLoadingStateImpl implements ProductsLoadingState {
     TResult Function(List<AppProduct> products, List<AppCategory> categories)?
         init,
     TResult Function()? productsLoading,
-    TResult Function(List<AppProduct> products)? products,
+    TResult Function(List<AppProduct> products, List<AppCategory> categories)?
+        products,
     TResult Function(String msg, AppCategory? category, String? searchText,
             SortBy? sortBy, Sortorder? order)?
         productsError,
@@ -751,7 +771,7 @@ abstract class _$$ProductsStateImplCopyWith<$Res> {
           _$ProductsStateImpl value, $Res Function(_$ProductsStateImpl) then) =
       __$$ProductsStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<AppProduct> products});
+  $Res call({List<AppProduct> products, List<AppCategory> categories});
 }
 
 /// @nodoc
@@ -766,12 +786,17 @@ class __$$ProductsStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? products = null,
+    Object? categories = null,
   }) {
     return _then(_$ProductsStateImpl(
       null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
               as List<AppProduct>,
+      null == categories
+          ? _value._categories
+          : categories // ignore: cast_nullable_to_non_nullable
+              as List<AppCategory>,
     ));
   }
 }
@@ -779,8 +804,10 @@ class __$$ProductsStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ProductsStateImpl implements ProductsState {
-  const _$ProductsStateImpl(final List<AppProduct> products)
-      : _products = products;
+  const _$ProductsStateImpl(
+      final List<AppProduct> products, final List<AppCategory> categories)
+      : _products = products,
+        _categories = categories;
 
   final List<AppProduct> _products;
   @override
@@ -790,9 +817,17 @@ class _$ProductsStateImpl implements ProductsState {
     return EqualUnmodifiableListView(_products);
   }
 
+  final List<AppCategory> _categories;
+  @override
+  List<AppCategory> get categories {
+    if (_categories is EqualUnmodifiableListView) return _categories;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_categories);
+  }
+
   @override
   String toString() {
-    return 'HomeState.products(products: $products)';
+    return 'HomeState.products(products: $products, categories: $categories)';
   }
 
   @override
@@ -800,12 +835,16 @@ class _$ProductsStateImpl implements ProductsState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProductsStateImpl &&
-            const DeepCollectionEquality().equals(other._products, _products));
+            const DeepCollectionEquality().equals(other._products, _products) &&
+            const DeepCollectionEquality()
+                .equals(other._categories, _categories));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_products));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_products),
+      const DeepCollectionEquality().hash(_categories));
 
   @JsonKey(ignore: true)
   @override
@@ -822,12 +861,14 @@ class _$ProductsStateImpl implements ProductsState {
             List<AppProduct> products, List<AppCategory> categories)
         init,
     required TResult Function() productsLoading,
-    required TResult Function(List<AppProduct> products) products,
+    required TResult Function(
+            List<AppProduct> products, List<AppCategory> categories)
+        products,
     required TResult Function(String msg, AppCategory? category,
             String? searchText, SortBy? sortBy, Sortorder? order)
         productsError,
   }) {
-    return products(this.products);
+    return products(this.products, categories);
   }
 
   @override
@@ -838,12 +879,13 @@ class _$ProductsStateImpl implements ProductsState {
     TResult? Function(List<AppProduct> products, List<AppCategory> categories)?
         init,
     TResult? Function()? productsLoading,
-    TResult? Function(List<AppProduct> products)? products,
+    TResult? Function(List<AppProduct> products, List<AppCategory> categories)?
+        products,
     TResult? Function(String msg, AppCategory? category, String? searchText,
             SortBy? sortBy, Sortorder? order)?
         productsError,
   }) {
-    return products?.call(this.products);
+    return products?.call(this.products, categories);
   }
 
   @override
@@ -854,14 +896,15 @@ class _$ProductsStateImpl implements ProductsState {
     TResult Function(List<AppProduct> products, List<AppCategory> categories)?
         init,
     TResult Function()? productsLoading,
-    TResult Function(List<AppProduct> products)? products,
+    TResult Function(List<AppProduct> products, List<AppCategory> categories)?
+        products,
     TResult Function(String msg, AppCategory? category, String? searchText,
             SortBy? sortBy, Sortorder? order)?
         productsError,
     required TResult orElse(),
   }) {
     if (products != null) {
-      return products(this.products);
+      return products(this.products, categories);
     }
     return orElse();
   }
@@ -911,10 +954,12 @@ class _$ProductsStateImpl implements ProductsState {
 }
 
 abstract class ProductsState implements HomeState {
-  const factory ProductsState(final List<AppProduct> products) =
+  const factory ProductsState(
+          final List<AppProduct> products, final List<AppCategory> categories) =
       _$ProductsStateImpl;
 
   List<AppProduct> get products;
+  List<AppCategory> get categories;
   @JsonKey(ignore: true)
   _$$ProductsStateImplCopyWith<_$ProductsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1050,7 +1095,9 @@ class _$ProductsErrorStateImpl implements ProductsErrorState {
             List<AppProduct> products, List<AppCategory> categories)
         init,
     required TResult Function() productsLoading,
-    required TResult Function(List<AppProduct> products) products,
+    required TResult Function(
+            List<AppProduct> products, List<AppCategory> categories)
+        products,
     required TResult Function(String msg, AppCategory? category,
             String? searchText, SortBy? sortBy, Sortorder? order)
         productsError,
@@ -1066,7 +1113,8 @@ class _$ProductsErrorStateImpl implements ProductsErrorState {
     TResult? Function(List<AppProduct> products, List<AppCategory> categories)?
         init,
     TResult? Function()? productsLoading,
-    TResult? Function(List<AppProduct> products)? products,
+    TResult? Function(List<AppProduct> products, List<AppCategory> categories)?
+        products,
     TResult? Function(String msg, AppCategory? category, String? searchText,
             SortBy? sortBy, Sortorder? order)?
         productsError,
@@ -1082,7 +1130,8 @@ class _$ProductsErrorStateImpl implements ProductsErrorState {
     TResult Function(List<AppProduct> products, List<AppCategory> categories)?
         init,
     TResult Function()? productsLoading,
-    TResult Function(List<AppProduct> products)? products,
+    TResult Function(List<AppProduct> products, List<AppCategory> categories)?
+        products,
     TResult Function(String msg, AppCategory? category, String? searchText,
             SortBy? sortBy, Sortorder? order)?
         productsError,

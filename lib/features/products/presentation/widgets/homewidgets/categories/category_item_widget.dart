@@ -87,12 +87,6 @@ class CategoryItemShimmer extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(10.r),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.2),
-                blurRadius: 10.r,
-              ),
-            ],
           ),
           child: Row(
             children: [

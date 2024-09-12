@@ -117,7 +117,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             currentAppCategory = event.category;
             homeProductsList = products;
           }
-          emit(HomeState.products(homeProductsList));
+          emit(HomeState.products(homeProductsList, homeCategoriesList));
         },
       );
     });
@@ -134,11 +134,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         emit(HomeState.productsError(msg: errorMessage));
       } else {
         homeProductsList.addAll(products);
-        emit(HomeState.products(homeProductsList));
+        emit(HomeState.products(homeProductsList, homeCategoriesList));
         isNoMore = products.length < limit;
       }
     } else {
-      emit(HomeState.products(products));
+      emit(HomeState.products(products, homeCategoriesList));
     }
   }
 
