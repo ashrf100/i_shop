@@ -16,7 +16,8 @@ Future<void> main() async {
   await di.init();
   await initializeHive();
   configureSystemUI();
-  runApp(
-    Phoenix(child: const IShop()), 
-  );
+  runApp(Phoenix(child: const IShop()));
+
+
+  
 }

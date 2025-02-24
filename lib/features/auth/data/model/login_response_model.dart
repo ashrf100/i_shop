@@ -11,7 +11,7 @@ class LoginResponseModel {
   final String lastName;
   final String gender;
   final String image;
-  final String token;
+  final String accessToken;
   final String refreshToken;
 
   LoginResponseModel({
@@ -22,11 +22,12 @@ class LoginResponseModel {
     required this.lastName,
     required this.gender,
     required this.image,
-    required this.token,
+    required this.accessToken,
     required this.refreshToken,
   });
 
-  factory LoginResponseModel.fromJson(Map<String, dynamic> json) => _$LoginResponseModelFromJson(json);
+  factory LoginResponseModel.fromJson(Map<String, dynamic> json) =>
+      _$LoginResponseModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$LoginResponseModelToJson(this);
 }

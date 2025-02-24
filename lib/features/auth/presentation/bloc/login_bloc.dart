@@ -30,7 +30,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   Future<void> _onLoginRequested(
       LoginRequested event, Emitter<LoginState> emit) async {
     emit(const LoginLoading());
-
     final result = await loginUserUseCase.call(
       loginRequestModel: LoginRequestModel(
           username: event.username,

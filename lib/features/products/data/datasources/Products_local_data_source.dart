@@ -2,7 +2,7 @@ import 'package:i_shop/core/hive/hive_service.dart';
 import 'package:i_shop/features/products/domain/entities/app_product.dart';
 import 'package:i_shop/core/error/exceptions_errors.dart';
 
-abstract class ProductsLocalDataSource {
+abstract class ProductsLocalDataSource { 
   Future<void> addFavorite(AppProduct appProduct);
   Future<void> removeFavorite(String id);
   Future<List<AppProduct>> getFavorites();
@@ -28,7 +28,7 @@ class ProductsLocalDataSourceImpl implements ProductsLocalDataSource {
     try {
       await hiveService.delete(id);
     } catch (e) {
-      ErrorHandler.handleError(e);
+      ErrorHandler.handleError(e); 
       rethrow;
     }
   }

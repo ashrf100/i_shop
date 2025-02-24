@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:i_shop/core/error/app_exception.dart';
 import 'package:i_shop/core/error/exceptions_errors.dart';
 import 'package:i_shop/core/network/api_service.dart';
-import 'package:i_shop/features/auth/data/datasources/auth_local_data_source.dart';
 import 'package:i_shop/features/auth/data/model/login_request_model.dart';
 import 'package:i_shop/features/auth/data/model/login_response_model.dart';
 
